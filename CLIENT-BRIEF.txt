@@ -1,0 +1,211 @@
+=======================================
+TECH DAD MEDIA — BUILD BRIEF FOR CLAUDE
+=======================================
+Generated: June 18, 2026 8:19 pm EDT
+
+>>> READ FIRST <<<
+You are building a small-business website for the client below. Build it
+the Tech Dad Media way — our house style and file structure are at the
+very bottom under "HOW WE BUILD". The full client intake follows the brief.
+
+PHOTOS are already in this folder (the extracted intake ZIP) — WebP, sorted
+into /logo, /general, /locations/<area>, /services/<service>. The paths below
+are local to that folder (./client-photos/...); use the files, not any URL.
+
+  >>> NOTE FOR THE BUILD TEST: This is a FICTIONAL business created to mirror
+      a real Tech Dad Media "Copy for Claude" brief. The data and photos are
+      placeholders. Build from it exactly as if it were a real client. <<<
+
+BUSINESS: Summit Exterior Cleaning LLC
+CONTACT:  Mike Reyes | mike@summitexteriorclean.com | 8285550142
+TRADE:    Exterior Cleaning
+STATUS:   IN PROGRESS
+SUBMITTED: June 16, 2026 11:59 am
+
+THE GIST
+----------------------------------------
+Who:   Summit Exterior Cleaning LLC — Exterior Cleaning
+Where: Asheville, NC (30 mile radius from Asheville)
+Pitch: Summit Exterior Cleaning provides careful, low-pressure soft washing and pressure washing — house washing, concrete, roofs, and gutters — across the Asheville area.
+Does:  House Soft Washing, Driveway & Concrete Cleaning, Roof Soft Washing, Gutter Brightening
+Goal:  client wants visitors to → Call me
+Tone:  Friendly & approachable — straight-talking, local, no upsell pressure
+Edge:  What sets Summit apart is the soft-wash method — we use the correct pressure and detergent for every surface, so siding doesn't crack and roof warranties stay intact. Results that last 2-3x longer than a power-wash blast.
+Look:  Just go off my logo
+
+STANDARD LAYOUT (top → bottom)
+----------------------------------------
+Hero → trust strip → about → services → gallery → CTA banner →
+contact form → service area → footer.
+One page per service (from a single template). Local service-area pages
+for SEO. Single H1, LocalBusiness + FAQPage JSON-LD baked in.
+
+BASICS
+----------------------------------------
+Tagline: Soft washing that lasts — siding, concrete, roofs, and gutters across the Asheville area.
+Years in business: 9
+Hours: Mon-Fri 7am - 6pm, Sat 8am - 2pm
+Trust signals: Insured, 4.9 stars from 87 Google reviews
+Service radius: 30 miles from Asheville
+Emergency: No
+Who they serve: Both (residential & commercial)
+Payments / financing: Cash, Check, Venmo, Card
+Site goal (CTA): Call me
+Free estimates: Yes
+Target search term: pressure washing Asheville NC (rank the high-volume term, differentiate on the soft-wash method)
+
+BRAND VOICE
+----------------------------------------
+Tone: Friendly & approachable
+Voice note: Local and straight-talking. Confident about the method, never pushy.
+What sets them apart: The soft-wash method — correct pressure and detergent per surface, so nothing gets damaged and results last 2-3x longer.
+Design likes: —
+Brand colors: Just go off my logo
+
+ONLINE PRESENCE
+----------------------------------------
+Website: summitexteriorclean.com
+Facebook: https://www.facebook.com/profile.php?id=000000000000000
+Google: Summit Exterior Cleaning LLC
+Linkedin: https://www.linkedin.com/in/example-placeholder/
+Domain: summitexteriorclean.com
+
+LOCATIONS (1)
+========================================
+1. Asheville, NC ★ PRIMARY
+   Address:   100 Example St
+   Zip codes: 28801
+   Areas:     Asheville and surrounding areas (Buncombe & Henderson counties)
+   Notes:     Older homes under heavy tree canopy — north-facing siding and shaded roofs grow algae fast. Newer subdivisions with light siding show pollen and dirt quickly.
+   Photos (6) → ./client-photos/locations/Asheville_NC/
+     client-photos/locations/Asheville_NC/Asheville_NC_1.webp
+     client-photos/locations/Asheville_NC/Asheville_NC_2.webp
+     client-photos/locations/Asheville_NC/Asheville_NC_3.webp
+     client-photos/locations/Asheville_NC/Asheville_NC_4.webp
+     client-photos/locations/Asheville_NC/Asheville_NC_5.webp
+     client-photos/locations/Asheville_NC/Asheville_NC_6.webp
+
+SERVICES (4)
+========================================
+1. House Soft Washing
+   Description: Low-pressure wash that strips mildew, algae, and pollen off siding without forcing water behind it or cracking the surface.
+   Why them:    We never blast siding with high pressure — detergent does the work at low pressure, so the finish lasts and nothing gets damaged.
+   Pricing:     $0.15 - $0.30 a square foot
+   Photos (5) → ./client-photos/services/House_Soft_Washing/
+     client-photos/services/House_Soft_Washing/House_Soft_Washing_1.webp
+     client-photos/services/House_Soft_Washing/House_Soft_Washing_2.webp
+     client-photos/services/House_Soft_Washing/House_Soft_Washing_3.webp
+     client-photos/services/House_Soft_Washing/House_Soft_Washing_4.webp
+     client-photos/services/House_Soft_Washing/House_Soft_Washing_5.webp
+
+2. Driveway & Concrete Cleaning
+   Description: Even, stripe-free surface cleaning that lifts oil, dirt, and organic staining out of concrete, pavers, and walkways.
+   Why them:    We use a flat surface cleaner for an even finish — no zebra-stripe wand marks — and pre-treat oil and rust before the pass.
+   Pricing:     $0.20 - $0.40 a square foot
+   Photos (5) → ./client-photos/services/Driveway___Concrete_Cleaning/
+     client-photos/services/Driveway___Concrete_Cleaning/Driveway___Concrete_Cleaning_1.webp
+     client-photos/services/Driveway___Concrete_Cleaning/Driveway___Concrete_Cleaning_2.webp
+     client-photos/services/Driveway___Concrete_Cleaning/Driveway___Concrete_Cleaning_3.webp
+     client-photos/services/Driveway___Concrete_Cleaning/Driveway___Concrete_Cleaning_4.webp
+     client-photos/services/Driveway___Concrete_Cleaning/Driveway___Concrete_Cleaning_5.webp
+
+3. Roof Soft Washing
+   Description: Gentle, low-pressure treatment that kills the black streaks (gloeocapsa magma) on shingles and restores the roof's look.
+   Why them:    We never walk or pressure-wash a roof. Low-pressure treatment only — the method asphalt-shingle manufacturers actually recommend, so the warranty stays intact.
+   Pricing:     $350 - $900 per roof
+   Photos (5) → ./client-photos/services/Roof_Soft_Washing/
+     client-photos/services/Roof_Soft_Washing/Roof_Soft_Washing_1.webp
+     client-photos/services/Roof_Soft_Washing/Roof_Soft_Washing_2.webp
+     client-photos/services/Roof_Soft_Washing/Roof_Soft_Washing_3.webp
+     client-photos/services/Roof_Soft_Washing/Roof_Soft_Washing_4.webp
+     client-photos/services/Roof_Soft_Washing/Roof_Soft_Washing_5.webp
+
+4. Gutter Brightening
+   Description: Removes the oxidation "tiger stripes" off the face of aluminum gutters and brings the finish back to near-new.
+   Why them:    Hand-detailed — we don't leave the bottom edges streaked, and we clear the troughs while we're up there.
+   Pricing:     $150 - $300 per service
+   Photos (4) → ./client-photos/services/Gutter_Brightening/
+     client-photos/services/Gutter_Brightening/Gutter_Brightening_1.webp
+     client-photos/services/Gutter_Brightening/Gutter_Brightening_2.webp
+     client-photos/services/Gutter_Brightening/Gutter_Brightening_3.webp
+     client-photos/services/Gutter_Brightening/Gutter_Brightening_4.webp
+
+REVIEWS (4) — pulled from Google/Facebook via the intake
+========================================
+1. Karen D. — Hendersonville | ★★★★★ | House Soft Washing
+   "Mike got 9 years of algae off our north-facing siding in an afternoon. Looks brand new."
+2. Tom B. — Asheville | ★★★★★ | Driveway & Concrete Cleaning
+   "Driveway looked like we'd repoured it. Showed up on time, fair price."
+3. Dana R. — Black Mountain | ★★★★★ | Roof Soft Washing
+   "The black streaks on our roof are completely gone. No pressure, no damage."
+4. Greg M. — Weaverville | ★★★★★ | House Soft Washing
+   "Set up a recurring wash for our HOA. Reliable, and the houses always look great."
+
+(Headline rating stays 4.9 stars / 87 reviews — these 4 are the ones to feature.)
+
+FAQS (4) — common questions, feed the FAQPage JSON-LD
+========================================
+Q: Will soft washing damage my plants?
+A: No — we pre-wet landscaping and use plant-safe dilutions.
+Q: How long does a house wash last?
+A: Typically 2-3 years before regrowth in our climate.
+Q: Do you need to be home?
+A: No, as long as we have water access and any gate codes.
+Q: Is soft washing safe for my roof?
+A: Yes — low-pressure treatment is the method asphalt-shingle manufacturers recommend. We never pressure-wash a roof.
+
+PHOTOS
+========================================
+Logo → ./client-photos/logo/
+  client-photos/logo/logo_1.webp
+
+General (team, trucks, equipment) → ./client-photos/general/
+  client-photos/general/general_1.webp
+  client-photos/general/general_2.webp
+
+EXTRA NOTES
+========================================
+We want the focus to be on House Soft Washing, with Roof Soft Washing and
+Driveway & Concrete as strong secondary services. Gutter Brightening is an
+add-on we mention but don't lead with.
+
+=======================================
+HOW WE BUILD  (Tech Dad Media house style — keep this UNIFORM across sites)
+=======================================
+The look is designed once as a single self-contained index.html — that is our
+style and source of truth. Then we convert it to modular PHP:
+
+  1. Pull every asset out of the HTML demo:
+       images -> /assets/images   (WebP)
+       CSS    -> /assets/css      (critical.css + style.css)
+       JS     -> /assets/js
+  2. Repeated markup becomes includes (head, header, footer, CTA strips).
+  3. Content becomes PHP data arrays — never hardcode it into the markup.
+  4. Each service renders from ONE template, driven by /data/services.php.
+
+Standard structure (mirrors github.com/Will513r/Shawns-Landscape — smaller
+sites use the SAME skeleton with fewer pages):
+
+  /index.php                    homepage
+  /about.php /contact.php /reviews.php /areas-we-serve.php /404.php
+  /.htaccess                    clean URLs (/services/roof-soft-washing, /contact)
+  /includes/                    shared partials, included on every page
+      config.php                site constants (SITE_URL, phone, REVIEW_RATING…)
+      head.php                  <head>: title/meta/canonical/OG, built from $meta
+      header.php   footer.php
+      schema-helpers.php        JSON-LD builders (LocalBusiness, FAQ, Service)
+      contact-strip.php  mobile-sticky-cta.php  nearby-areas.php  (reusable blocks)
+  /data/                        content as PHP arrays (DRY)
+      services.php              keyed by slug: name, full_name, description,
+                                symptoms[], anti_complaint[], cta_suffix
+      cities.php   reviews.php   projects.php
+  /services/
+      index.php                 services hub
+      service-template.php      renders ANY service from data/services.php
+                                (?service=slug, optional ?city=slug for local pages)
+  /assets/css   /assets/js   /assets/images(webp)
+  /api/                         form / lead endpoints (e.g. submit-lead.php)
+
+Page pattern: each page sets $meta (title/description/canonical), then
+include head.php -> header.php -> content -> footer.php. Keep content in /data,
+markup DRY, and SEO (schema + meta) baked in from the first commit.
