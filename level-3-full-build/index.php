@@ -10,7 +10,7 @@ $projects = require __DIR__ . '/data/projects.php';
 
 // Prepare metadata
 $meta = [
-    'title' => 'Summit Exterior Cleaning | Soft Washing Asheville NC',
+    'title' => 'Pressure Washing Asheville NC | Summit Exterior Cleaning',
     'description' => 'Summit Exterior Cleaning LLC provides safe, low-pressure soft washing and pressure washing in Asheville, NC and Buncombe County. Call for a free estimate!',
     'canonical' => '/',
     'faqs' => [
@@ -29,7 +29,7 @@ include __DIR__ . '/includes/header.php';
     <div class="container hero-container">
         <div class="hero-content">
             <span class="hero-tagline">Asheville\'s Premier Exterior Cleaners</span>
-            <h1 class="hero-title">Soft Washing That Lasts — Siding, Roofs, and Concrete</h1>
+            <h1 class="hero-title">Pressure Washing in Asheville, NC — Restored Safely with Soft Washing</h1>
             <p class="hero-desc">We use safe, low-pressure soft washing and detergent-driven cleaning to keep Asheville homes and businesses looking pristine. Protect your siding and shingles from damage with results that last 2-3x longer than power washing.</p>
             <div class="hero-actions">
                 <a href="tel:<?php echo PHONE_TEL; ?>" class="btn btn-accent btn-large">
