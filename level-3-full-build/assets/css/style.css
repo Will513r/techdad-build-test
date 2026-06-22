@@ -1236,6 +1236,32 @@ img {
     border: 1px solid #334155;
 }
 
+.footer-social-links {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.social-link-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background-color: #1e293b;
+    color: #94a3b8;
+    border: 1px solid #334155;
+    transition: var(--transition-smooth);
+}
+
+.social-link-btn:hover {
+    background-color: var(--color-accent);
+    color: var(--color-white);
+    border-color: var(--color-accent);
+    transform: translateY(-2px);
+}
+
 .footer-heading {
     font-size: 18px;
     color: var(--color-white);
