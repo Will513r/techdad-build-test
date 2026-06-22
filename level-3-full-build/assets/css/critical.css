@@ -58,8 +58,10 @@ a { color: var(--color-accent); text-decoration: none; }
 .logo-text { display: flex; flex-direction: column; }
 .logo-title { font-family: var(--font-header); font-size: 22px; font-weight: 800; color: var(--color-white); letter-spacing: 0.05em; }
 .logo-subtitle { font-size: 11px; text-transform: uppercase; letter-spacing: 0.15em; color: var(--color-silver); font-weight: 600; }
+.desktop-nav { margin-left: auto; margin-right: 30px; }
 .desktop-nav .nav-list { display: flex; list-style: none; gap: 25px; }
 .desktop-nav .nav-link { color: var(--color-white); font-weight: 500; font-size: 15px; }
+.btn-phone-cta { border-radius: 9999px; }
 .btn { display: inline-flex; align-items: center; justify-content: center; font-family: var(--font-header); font-weight: 600; padding: 12px 24px; border-radius: var(--border-radius-md); border: 2px solid transparent; cursor: pointer; transition: var(--transition-smooth); }
 .btn-primary { background-color: var(--color-accent); color: var(--color-white); }
 .mobile-nav-toggle { display: none; background: transparent; border: none; cursor: pointer; flex-direction: column; gap: 6px; }
