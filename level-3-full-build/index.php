@@ -229,14 +229,9 @@ include __DIR__ . '/includes/header.php';
 <section class="reviews-section section-padding">
     <div class="big-reviews-watermark">Reviews</div>
     <div class="container">
-        <div class="text-center section-header">
-            <div class="reviews-badge">
+        <div class="text-center section-header" style="margin-bottom: 40px;">
+            <div class="reviews-badge" style="margin-bottom: 0;">
                 <span class="badge-dot"></span> What Asheville Homeowners Say
-            </div>
-            <h2>Customer Feedback</h2>
-            <div class="rating-header">
-                <span class="rating-stars">★★★★★</span>
-                <span class="rating-txt"><strong>4.9 out of 5 stars</strong> based on 87 Google Reviews</span>
             </div>
         </div>
         
