@@ -925,19 +925,27 @@ img {
 
 /* Services Tab Section */
 .services-section .container {
-    max-width: 1300px;
+    max-width: 1400px;
 }
 
-.services-header-flex {
+.services-header-grid {
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    gap: 40px;
+    margin-bottom: 50px;
+    align-items: flex-end;
+}
+
+.services-header-left-col {
+    display: flex;
+    align-items: flex-end;
+}
+
+.services-header-right-col {
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
-    margin-bottom: 50px;
     gap: 30px;
-}
-
-.services-header-left {
-    max-width: 650px;
 }
 
 .services-badge {
@@ -975,7 +983,7 @@ img {
 
 .explore-btn {
     border-radius: 9999px;
-    background-color: var(--color-white);
+    background-color: rgba(255, 255, 255, 0);
     color: var(--color-primary) !important;
     border: 1px solid var(--color-primary);
     font-size: 12px;
@@ -2442,7 +2450,12 @@ img {
     .services-grid, .reviews-grid, .blog-posts-grid, .area-row-body {
         grid-template-columns: 1fr;
     }
-    .services-header-flex {
+    .services-header-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+        margin-bottom: 30px;
+    }
+    .services-header-right-col {
         flex-direction: column;
         align-items: flex-start;
         gap: 20px;

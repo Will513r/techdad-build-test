@@ -139,15 +139,15 @@ include __DIR__ . '/includes/header.php';
 <!-- Services Tab Section -->
 <section class="services-section section-padding bg-light">
     <div class="container">
-        <!-- Section Header styled like attached mockup -->
-        <div class="services-header-flex">
-            <div class="services-header-left">
+        <!-- Section Header styled like attached mockup (Grid-aligned) -->
+        <div class="services-header-grid">
+            <div class="services-header-left-col">
                 <div class="services-badge">
                     <span class="badge-dot"></span> Services
                 </div>
-                <h2 class="services-heading">Elevated cleaning services for your homes & businesses.</h2>
             </div>
-            <div class="services-header-right">
+            <div class="services-header-right-col">
+                <h2 class="services-heading">Elevated cleaning services for br your homes & businesses.</h2>
                 <a href="<?php echo SITE_URL; ?>/services" class="btn explore-btn">
                     EXPLORE SERVICES <span class="explore-star">&#10022;</span>
                 </a>
