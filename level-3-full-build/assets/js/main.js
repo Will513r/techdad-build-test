@@ -267,4 +267,31 @@ document.addEventListener('DOMContentLoaded', function() {
             lastScrollY = currentScrollY;
         }, { passive: true });
     }
+
+    // =========================================================================
+    // 6. Services Tab Switcher
+    // =========================================================================
+    const tabItems = document.querySelectorAll('.service-tab-item');
+    const detailCards = document.querySelectorAll('.service-detail-card');
+    
+    if (tabItems.length > 0 && detailCards.length > 0) {
+        tabItems.forEach(tab => {
+            tab.addEventListener('click', function() {
+                const targetService = this.getAttribute('data-service');
+                
+                // Toggle tab active class
+                tabItems.forEach(item => item.classList.remove('active'));
+                this.classList.add('active');
+                
+                // Toggle detail cards visibility
+                detailCards.forEach(card => {
+                     if (card.getAttribute('data-service') === targetService) {
+                         card.style.display = 'grid';
+                     } else {
+                         card.style.display = 'none';
+                     }
+                });
+            });
+        });
+    }
 });

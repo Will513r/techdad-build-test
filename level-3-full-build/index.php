@@ -81,9 +81,9 @@ include __DIR__ . '/includes/header.php';
         </div>
         <div class="about-text-content">
             <span class="section-subtitle">About Summit Exterior Cleaning</span>
-            <h2>Straight-Talking Local Service You Can Count On</h2>
+            <h2>Straight-Talking Local <br> Service You Can Count On</h2>
             <p class="about-p">Owned and operated by <strong>Mike Reyes</strong>, Summit Exterior Cleaning LLC has spent nearly a decade serving Buncombe and Henderson counties. We built our business on a simple idea: do the job right, charge a fair price, and treat every property like it\'s our own.</p>
-            <p class="about-p">What sets us apart is our <strong>soft-wash method</strong>. Many power washers rely on high pressure to blast mold off surfaces, which often cracks vinyl siding, damages roofing shingle warranties, and breaks mortar joints. We use custom-blended, plant-safe detergents to dissolve algae and mold at the root, then rinse at low pressure. It\'s safer for your home, plant-safe, and keeps surfaces clean 2-3x longer.</p>
+            <p class="about-p">What sets us apart is our <strong>soft-wash method</strong>. Many power washers rely on high pressure to blast mold off surfaces, which often cracks vinyl siding, damages roofing shingle warranties, and breaks mortar joints. We use custom-blended, plant-safe detergents to dissolve algae and mold at the root, then rinse at low pressure.</p>
             
             <div class="about-highlights">
                 <div class="highlight-item">
@@ -105,46 +105,7 @@ include __DIR__ . '/includes/header.php';
     </div>
 </section>
 
-<!-- Primary Lead Service Callout (House Soft Washing) -->
-<section class="primary-service-callout section-padding bg-light">
-    <div class="container">
-        <div class="text-center section-header">
-            <span class="section-subtitle">Our Featured Service</span>
-            <h2>House Soft Washing</h2>
-            <p class="section-lead-desc">The safe, effective way to clean your home\'s exterior without high pressure.</p>
-        </div>
-        
-        <div class="house-wash-grid">
-            <div class="house-wash-text">
-                <h3>Why Soft Washing Beats Traditional Power Washing</h3>
-                <p>Traditional pressure washing uses high velocity to scrub dirt off, which can force water behind siding panels, causing trapped moisture and wood rot. It can also crack vinyl siding and strip paint.</p>
-                <p>Our soft wash method uses biodegradable detergents that break down organic buildup and sanitize the surface. We then wash it away with low pressure (under 500 PSI). The results are spotless and last much longer because the mold spores are actually dead, not just blown around.</p>
-                
-                <h4 class="mt-4">Our Siding Cleaning Details:</h4>
-                <ul class="check-list">
-                    <li><strong>Pricing:</strong> $0.15 to $0.30 per square foot</li>
-                    <li><strong>Safely cleans:</strong> Vinyl siding, brick, stucco, stone, cedar shake, and HardiePlank.</li>
-                    <li><strong>Lifts:</strong> Green algae, black mold, dark soot, spiderwebs, and thick pollen.</li>
-                </ul>
-                <div class="mt-4">
-                    <a href="<?php echo SITE_URL; ?>/services/house-soft-washing" class="btn btn-primary">Learn More About House Washing</a>
-                </div>
-            </div>
-            
-            <!-- Gallery / Photo grid for House Soft Washing -->
-            <div class="house-wash-photos">
-                <div class="photo-main">
-                    <img src="<?php echo SITE_URL; ?>/assets/images/services/House_Soft_Washing/House_Soft_Washing_1.webp" alt="House Soft Washing Before/After" class="rounded-lg shadow-md">
-                    <span class="photo-badge">House Soft Washing</span>
-                </div>
-                <div class="photo-sub-grid">
-                    <img src="<?php echo SITE_URL; ?>/assets/images/services/House_Soft_Washing/House_Soft_Washing_2.webp" alt="Vinyl Siding Soft Wash" class="rounded-lg shadow-sm">
-                    <img src="<?php echo SITE_URL; ?>/assets/images/services/House_Soft_Washing/House_Soft_Washing_3.webp" alt="Eaves Soft Washing" class="rounded-lg shadow-sm">
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+
 
 <!-- Interactive Signature Element: Before/After Slider -->
 <section class="slider-section section-padding">
@@ -175,42 +136,95 @@ include __DIR__ . '/includes/header.php';
     </div>
 </section>
 
-<!-- Services Grid Section -->
+<!-- Services Tab Section -->
 <section class="services-section section-padding bg-light">
     <div class="container">
-        <div class="text-center section-header">
-            <span class="section-subtitle">Our Professional Services</span>
-            <h2>Exterior Cleaning for All Surfaces</h2>
-            <p class="section-desc max-w-2xl mx-auto">We provide clean, streak-free results for siding, concrete, roofs, and gutters. Select a service to read about our methods and rates.</p>
+        <!-- Section Header styled like attached mockup -->
+        <div class="services-header-flex">
+            <div class="services-header-left">
+                <div class="services-badge">
+                    <span class="badge-dot"></span> Services
+                </div>
+                <h2 class="services-heading">Elevated cleaning services for your homes & businesses.</h2>
+            </div>
+            <div class="services-header-right">
+                <a href="<?php echo SITE_URL; ?>/services" class="btn explore-btn">
+                    EXPLORE SERVICES <span class="explore-star">&#10022;</span>
+                </a>
+            </div>
         </div>
         
-        <div class="services-grid">
-            <?php 
-            foreach ($services as $slug => $svc): 
-                $is_lead = ($slug === 'house-soft-washing');
-            ?>
-                <div class="service-card <?php echo $is_lead ? 'service-card-featured' : ''; ?> rounded-lg shadow-sm">
-                    <?php if ($is_lead): ?>
-                        <div class="card-featured-badge">Primary Service</div>
-                    <?php endif; ?>
-                    <div class="card-img-wrapper">
-                        <img src="<?php echo SITE_URL; ?>/<?php echo $svc['photos'][0]; ?>" alt="<?php echo htmlspecialchars($svc['name']); ?>" class="card-img">
+        <!-- Tab Split Layout -->
+        <div class="services-split-layout">
+            <!-- Left Tab Navigation Menu -->
+            <div class="services-tabs-card">
+                <?php 
+                $index = 0;
+                foreach ($services as $slug => $svc): 
+                    $is_active = ($index === 0);
+                ?>
+                    <div class="service-tab-item <?php echo $is_active ? 'active' : ''; ?>" data-service="<?php echo $slug; ?>">
+                        <span class="tab-number"><?php echo $index + 1; ?>/</span>
+                        <span class="tab-name"><?php echo htmlspecialchars($svc['name']); ?></span>
+                        <span class="tab-arrow">&rarr;</span>
                     </div>
-                    <div class="card-content">
-                        <h3><?php echo htmlspecialchars($svc['name']); ?></h3>
-                        <p class="card-price">Rate: <?php echo htmlspecialchars($svc['pricing']); ?></p>
-                        <p class="card-text"><?php echo htmlspecialchars($svc['short_desc']); ?></p>
-                        <ul class="card-bullets">
-                            <?php foreach (array_slice($svc['benefits'], 0, 3) as $bullet): ?>
-                                <li>&bull; <?php echo htmlspecialchars($bullet); ?></li>
-                            <?php endforeach; ?>
-                        </ul>
-                        <div class="card-action">
-                            <a href="<?php echo SITE_URL; ?>/services/<?php echo $slug; ?>" class="btn <?php echo $is_lead ? 'btn-primary' : 'btn-secondary'; ?> btn-block">Read Service Details</a>
+                <?php 
+                    $index++;
+                endforeach; 
+                ?>
+            </div>
+            
+            <!-- Right Detail Cards Container -->
+            <div class="services-details-container">
+                <?php 
+                $index = 0;
+                foreach ($services as $slug => $svc): 
+                    $is_active = ($index === 0);
+                    
+                    // Curated pill tags for each service based on actual data
+                    $tags = [];
+                    if ($slug === 'house-soft-washing') {
+                        $tags = ['Vinyl Siding', 'HardiePlank', 'Eco Soaps', 'Low Pressure', 'Plant Safe'];
+                    } elseif ($slug === 'roof-soft-washing') {
+                        $tags = ['Shingle Cleaning', 'ARMA Approved', 'No-Pressure', 'Warranty Compliant', 'Eco Safe'];
+                    } elseif ($slug === 'concrete-cleaning') {
+                        $tags = ['Driveways', 'Sidewalks', 'Patios', 'Stripe-Free Cleaner', 'Weed Prevention'];
+                    } elseif ($slug === 'gutter-brightening') {
+                        $tags = ['Hand Detailed', 'Tiger Stripes', 'Oxidation Removal', 'Trough Clearing'];
+                    }
+                ?>
+                    <div class="service-detail-card" data-service="<?php echo $slug; ?>" style="<?php echo $is_active ? 'display: grid;' : 'display: none;'; ?>">
+                        <div class="detail-card-left">
+                            <h3 class="detail-title"><?php echo htmlspecialchars($svc['name']); ?></h3>
+                            <p class="detail-desc"><?php echo htmlspecialchars($svc['description']); ?></p>
+                            
+                            <div class="detail-price-box">
+                                <span class="price-label">Starting Price</span>
+                                <span class="price-value"><?php echo htmlspecialchars($svc['pricing']); ?></span>
+                            </div>
+                            
+                            <div class="detail-tags">
+                                <?php foreach ($tags as $tag): ?>
+                                    <span class="detail-tag"><?php echo htmlspecialchars($tag); ?></span>
+                                <?php endforeach; ?>
+                            </div>
+                            
+                            <div class="detail-action" style="margin-top: 35px;">
+                                <a href="<?php echo SITE_URL; ?>/services/<?php echo $slug; ?>" class="btn btn-primary">Book This Service</a>
+                            </div>
+                        </div>
+                        
+                        <div class="detail-card-right">
+                            <div class="detail-img-wrapper">
+                                <img src="<?php echo SITE_URL; ?>/<?php echo $svc['photos'][0]; ?>" alt="<?php echo htmlspecialchars($svc['name']); ?>" class="detail-img">
+                            </div>
                         </div>
                     </div>
-                </div>
-            <?php endforeach; ?>
+                <?php 
+                    $index++;
+                endforeach; 
+                ?>
+            </div>
         </div>
     </div>
 </section>
