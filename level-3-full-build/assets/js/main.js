@@ -269,29 +269,56 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // =========================================================================
-    // 6. Services Tab Switcher
+    // 6. Services Scrollspy & Tab Navigation
     // =========================================================================
     const tabItems = document.querySelectorAll('.service-tab-item');
     const detailCards = document.querySelectorAll('.service-detail-card');
     
     if (tabItems.length > 0 && detailCards.length > 0) {
+        // Tab click handling (Smooth Scroll to target card)
         tabItems.forEach(tab => {
             tab.addEventListener('click', function() {
                 const targetService = this.getAttribute('data-service');
+                const targetCard = document.getElementById(`service-${targetService}`);
                 
-                // Toggle tab active class
-                tabItems.forEach(item => item.classList.remove('active'));
-                this.classList.add('active');
-                
-                // Toggle detail cards visibility
-                detailCards.forEach(card => {
-                     if (card.getAttribute('data-service') === targetService) {
-                         card.style.display = 'grid';
-                     } else {
-                         card.style.display = 'none';
-                     }
-                });
+                if (targetCard) {
+                    // Account for sticky header offset
+                    const headerOffset = 110; 
+                    const elementPosition = targetCard.getBoundingClientRect().top + window.scrollY;
+                    const offsetPosition = elementPosition - headerOffset;
+                    
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth'
+                    });
+                }
             });
         });
+        
+        // Scrollspy handling (Intersection Observer)
+        const observerOptions = {
+            root: null,
+            rootMargin: '-30% 0px -50% 0px', // Triggers when card is in upper-middle of viewport
+            threshold: 0
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const activeService = entry.target.getAttribute('data-service');
+                    
+                    // Update active state in sidebar tabs
+                    tabItems.forEach(item => {
+                        if (item.getAttribute('data-service') === activeService) {
+                            item.classList.add('active');
+                        } else {
+                            item.classList.remove('active');
+                        }
+                    });
+                }
+            });
+        }, observerOptions);
+        
+        detailCards.forEach(card => observer.observe(card));
     }
 });

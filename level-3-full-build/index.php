@@ -147,7 +147,7 @@ include __DIR__ . '/includes/header.php';
                 </div>
             </div>
             <div class="services-header-right-col">
-                <h2 class="services-heading">Elevated cleaning services for br your homes & businesses.</h2>
+                <h2 class="services-heading">Elevated cleaning services for <br> your homes & businesses.</h2>
                 <a href="<?php echo SITE_URL; ?>/services" class="btn explore-btn">
                     EXPLORE SERVICES <span class="explore-star">&#10022;</span>
                 </a>
@@ -193,7 +193,7 @@ include __DIR__ . '/includes/header.php';
                         $tags = ['Hand Detailed', 'Tiger Stripes', 'Oxidation Removal', 'Trough Clearing'];
                     }
                 ?>
-                    <div class="service-detail-card" data-service="<?php echo $slug; ?>" style="<?php echo $is_active ? 'display: grid;' : 'display: none;'; ?>">
+                    <div class="service-detail-card" id="service-<?php echo $slug; ?>" data-service="<?php echo $slug; ?>">
                         <div class="detail-card-left">
                             <h3 class="detail-title"><?php echo htmlspecialchars($svc['name']); ?></h3>
                             <p class="detail-desc"><?php echo htmlspecialchars($svc['description']); ?></p>
