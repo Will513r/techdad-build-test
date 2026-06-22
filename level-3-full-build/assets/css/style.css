@@ -278,6 +278,11 @@ img {
     padding: 15px 0;
     border-bottom: 1px solid #172d3e;
     box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    transition: transform 0.3s ease-in-out;
+}
+
+.main-header.header-hidden {
+    transform: translateY(-100%);
 }
 
 .header-flex {

@@ -248,4 +248,23 @@ document.addEventListener('DOMContentLoaded', function() {
             serviceSelect.value = svcParam;
         }
     }
+
+    // =========================================================================
+    // 5. Smart Header Scroll Behavior (Hide on Scroll Down, Show on Scroll Up)
+    // =========================================================================
+    const mainHeader = document.querySelector('.main-header');
+    if (mainHeader) {
+        let lastScrollY = window.scrollY;
+        window.addEventListener('scroll', () => {
+            const currentScrollY = window.scrollY;
+            if (currentScrollY > lastScrollY && currentScrollY > 150) {
+                // Scrolling down & past header threshold
+                mainHeader.classList.add('header-hidden');
+            } else {
+                // Scrolling up or at the top
+                mainHeader.classList.remove('header-hidden');
+            }
+            lastScrollY = currentScrollY;
+        }, { passive: true });
+    }
 });

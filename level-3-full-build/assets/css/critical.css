@@ -52,6 +52,10 @@ a { color: var(--color-accent); text-decoration: none; }
     z-index: 100;
     padding: 15px 0;
     border-bottom: 1px solid #172d3e;
+    transition: transform 0.3s ease-in-out;
+}
+.main-header.header-hidden {
+    transform: translateY(-100%);
 }
 .header-flex { display: flex; justify-content: space-between; align-items: center; }
 .logo-link { display: flex; align-items: center; gap: 12px; }
