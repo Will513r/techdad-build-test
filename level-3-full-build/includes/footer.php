@@ -97,5 +97,37 @@ $footer_cities = require dirname(__DIR__) . '/data/cities.php';
 
 <!-- Core Script -->
 <script src="<?php echo SITE_URL; ?>/assets/js/main.js"></script>
+
+<?php 
+// Inject Hot Reload polling script strictly on local development hosts
+$host = $_SERVER['HTTP_HOST'] ?? '';
+if (str_contains($host, 'localhost') || str_contains($host, '127.0.0.1') || str_contains($host, '127.0.0.1:8081') || str_contains($host, 'localhost:8000')): 
+?>
+<script>
+(function() {
+    let lastMtime = null;
+    function checkHotReload() {
+        fetch('<?php echo SITE_URL; ?>/api/hot-reload-status.php')
+            .then(response => {
+                if (!response.ok) throw new Error('Offline');
+                return response.json();
+            })
+            .then(data => {
+                if (lastMtime === null) {
+                    lastMtime = data.mtime;
+                } else if (data.mtime > lastMtime) {
+                    console.log('[Hot Reload] File modification detected. Reloading page...');
+                    window.location.reload();
+                }
+            })
+            .catch(error => {
+                // Ignore connection errors during server restarts
+            });
+    }
+    // Poll every 1000ms
+    setInterval(checkHotReload, 1000);
+})();
+</script>
+<?php endif; ?>
 </body>
 </html>
