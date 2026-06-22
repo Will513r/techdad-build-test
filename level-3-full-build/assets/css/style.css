@@ -924,6 +924,10 @@ img {
 }
 
 /* Services Tab Section */
+.services-section .container {
+    max-width: 1300px;
+}
+
 .services-header-flex {
     display: flex;
     justify-content: space-between;
