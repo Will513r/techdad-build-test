@@ -55,8 +55,8 @@ include __DIR__ . '/includes/header.php';
             <span class="trust-lbl">Local Service in NC</span>
         </div>
         <div class="trust-item">
-            <span class="trust-val">4.9 ★★★★★</span>
-            <span class="trust-lbl">87+ Google Reviews</span>
+            <span class="trust-val">4.9 Google ★★★★★</span>
+            <span class="trust-lbl">87+ Reviews</span>
         </div>
         <div class="trust-item">
             <span class="trust-val">100% Insured</span>
