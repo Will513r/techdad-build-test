@@ -1187,18 +1187,26 @@ img {
     margin-bottom: 6px;
 }
 
-/* Reviews Block */
+/* ============================================================
+   Reviews Section — Staggered 3-card layout
+   ============================================================ */
 .reviews-section {
     position: relative;
-    overflow: hidden;
+    overflow: visible;                  /* Cards can bleed below */
     background-color: var(--color-bg);
+    padding-top: 70px;
+    padding-bottom: 0;                  /* No bottom padding — cards overflow out */
+    margin-bottom: 140px;              /* Space below section so page content isn't covered */
 }
 
 .reviews-section .container {
     position: relative;
     z-index: 2;
+    max-width: 100%;
+    width: 96%;
 }
 
+/* Pill badge */
 .reviews-badge {
     display: inline-flex;
     align-items: center;
@@ -1212,26 +1220,31 @@ img {
     font-weight: 700;
     letter-spacing: 0.05em;
     text-transform: uppercase;
-    margin-bottom: 20px;
 }
 
 .reviews-badge .badge-dot {
     width: 6px;
     height: 6px;
-    background-color: #ef4444; /* Red dot to match services badge */
+    background-color: #ef4444;
     border-radius: 50%;
 }
 
+.reviews-section-header {
+    text-align: center;
+    padding-bottom: 50px;
+}
+
+/* Watermark */
 .big-reviews-watermark {
     position: absolute;
-    top: 50%;
+    top: 40%;
     left: 50%;
     transform: translate(-50%, -50%);
     font-family: var(--font-header);
     font-size: clamp(80px, 20vw, 280px);
-    font-weight: 900;
+    font-weight: 600;
     color: var(--color-primary);
-    opacity: 0.3;
+    opacity: 0.06;
     letter-spacing: -3px;
     line-height: 1;
     pointer-events: none;
@@ -1241,149 +1254,166 @@ img {
     white-space: nowrap;
 }
 
-.reviews-inner-box {
-    background-color: var(--color-white);
-    padding: 50px 40px;
-    border-radius: var(--border-radius-lg);
-    border: 1px solid var(--color-border);
-    box-shadow: 0 10px 40px rgba(12, 31, 45, 0.03);
-    margin-top: 10px;
-}
-
-.rating-header {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 5px;
-    margin-top: 10px;
-}
-
-.rating-stars {
-    font-size: 24px;
-    color: var(--color-gold);
-    letter-spacing: 2px;
-}
-
-.rating-txt {
-    font-size: 15px;
-    color: var(--color-text-light);
-}
-
-.reviews-grid {
+/* ---- Stagger grid ---- */
+.reviews-stagger-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 30px;
-    margin-top: 0;
+    grid-template-columns: 1fr 1.15fr 1fr;
+    gap: 20px;
+    align-items: end;          /* Baseline at bottom so sides sit lower */
+    position: relative;
+    z-index: 3;
 }
 
+/* ---- Base card styles ---- */
 .review-card {
-    background-color: var(--color-bg);
-    padding: 30px;
-    border: 1px solid var(--color-border);
-    border-radius: var(--border-radius-md);
-    box-shadow: none;
+    border-radius: 16px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    transition: var(--transition-smooth);
+    overflow: hidden;
     position: relative;
-    z-index: 2;
 }
 
-.review-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 12px 30px rgba(12, 31, 45, 0.08);
-    border-color: var(--color-accent);
+/* ---- Side cards (white, sit lower) ---- */
+.review-card--side {
+    background-color: var(--color-white);
+    border: 1px solid var(--color-border);
+    padding: 30px;
+    margin-top: 80px;              /* Push sides down so center feels raised */
+    box-shadow: 0 8px 30px rgba(12, 31, 45, 0.06);
 }
 
-.review-top-meta {
+/* ---- Featured center card (dark, elevated) ---- */
+.review-card--featured {
+    background-color: var(--color-primary);
+    margin-top: 0;
+    box-shadow: 0 20px 60px rgba(12, 31, 45, 0.25);
+}
+
+.review-card-photo {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+}
+
+.review-card-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.review-card-featured-body {
+    padding: 28px;
+}
+
+/* ---- Service label ---- */
+.review-card-service {
+    display: block;
+    font-family: var(--font-header);
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-text-light);
+    margin-bottom: 14px;
+}
+
+.review-card--featured .review-card-service {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+/* ---- Review quote ---- */
+.review-text {
+    font-style: italic;
+    font-size: 15px;
+    line-height: 1.65;
+    color: var(--color-text);
+    margin-bottom: 28px;
+    flex-grow: 1;
+}
+
+.review-card--featured .review-text {
+    color: rgba(255, 255, 255, 0.88);
+}
+
+/* ---- Card footer (avatar + name + icon) ---- */
+.review-card-footer {
     display: flex;
     align-items: center;
-    gap: 15px;
-    margin-bottom: 20px;
+    gap: 12px;
+    border-top: 1px solid var(--color-border);
+    padding-top: 18px;
+}
+
+.review-card--featured .review-card-footer {
+    border-top-color: rgba(255, 255, 255, 0.12);
 }
 
 .review-avatar {
-    width: 48px;
-    height: 48px;
+    width: 42px;
+    height: 42px;
     border-radius: 50%;
     background-color: var(--color-silver-light);
     color: var(--color-primary);
+    font-family: var(--font-header);
     font-weight: 700;
-    font-size: 16px;
+    font-size: 15px;
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 2px solid var(--color-border);
     flex-shrink: 0;
+    border: 2px solid var(--color-border);
+}
+
+.review-avatar--dark {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: var(--color-white);
+    border-color: rgba(255, 255, 255, 0.15);
 }
 
 .review-author-info {
     display: flex;
     flex-direction: column;
     gap: 2px;
+    flex: 1;
 }
 
 .review-author {
     font-family: var(--font-header);
     font-weight: 700;
+    font-size: 14px;
     color: var(--color-primary);
-    font-size: 16px;
+}
+
+.review-card--featured .review-author {
+    color: var(--color-white);
 }
 
 .review-location {
-    font-size: 12px;
+    font-size: 11px;
+    letter-spacing: 0.04em;
     color: var(--color-text-light);
 }
 
-.review-stars-wrapper {
-    margin-left: auto;
-}
-
-.review-stars {
-    color: var(--color-gold);
-    font-size: 16px;
-    letter-spacing: 1px;
-}
-
-.review-text {
-    font-style: italic;
-    color: var(--color-text);
-    font-size: 15px;
-    line-height: 1.6;
-    margin-bottom: 25px;
-    flex-grow: 1;
-}
-
-.review-footer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-top: 1px solid var(--color-border);
-    padding-top: 15px;
-}
-
-.review-tag {
-    font-size: 11px;
-    font-weight: 600;
-    color: var(--color-accent);
-    background-color: var(--color-accent-light);
-    padding: 4px 10px;
-    border-radius: 9999px;
-    text-transform: uppercase;
+.review-card--featured .review-location {
+    color: rgba(255, 255, 255, 0.45);
 }
 
 .review-verified-badge {
-    font-size: 11px;
-    font-weight: 600;
-    color: var(--color-text-light);
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: var(--color-silver-light);
+    color: var(--color-accent);
     display: flex;
     align-items: center;
-    gap: 4px;
+    justify-content: center;
+    flex-shrink: 0;
 }
 
-.verified-icon {
-    color: #22c55e;
+.review-verified-badge--accent {
+    background-color: var(--color-accent);
+    color: var(--color-white);
 }
 
 /* CTA Banner Strip */
@@ -2656,8 +2686,15 @@ img {
     .service-cities-links-grid {
         grid-template-columns: 1fr;
     }
-    .reviews-inner-box {
-        padding: 30px 20px;
+    .reviews-stagger-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+    .review-card--side {
+        margin-top: 0;
+    }
+    .reviews-section {
+        margin-bottom: 40px;
     }
 }
 
