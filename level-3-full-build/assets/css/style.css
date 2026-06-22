@@ -651,14 +651,14 @@ img {
 .trust-strip-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 30px;
+    gap: 35px;
     text-align: center;
 }
 
 .trust-val {
     display: block;
     font-family: var(--font-header);
-    font-size: 26px;
+    font-size: 22px;
     font-weight: 800;
     color: var(--color-accent);
 }
