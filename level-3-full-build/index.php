@@ -34,7 +34,10 @@ include __DIR__ . '/includes/header.php';
             <div class="hero-actions">
                 <a href="tel:<?php echo PHONE_TEL; ?>" class="btn hero-call-btn">
                     <span class="btn-text">Call Mike: (828) 555-0142</span>
-                    <span class="btn-circle-arrow">
+                    <span class="btn-circle-arrow right-circle">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="chevron-icon"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                    </span>
+                    <span class="btn-circle-arrow left-circle">
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="chevron-icon"><polyline points="9 18 15 12 9 6"></polyline></svg>
                     </span>
                 </a>

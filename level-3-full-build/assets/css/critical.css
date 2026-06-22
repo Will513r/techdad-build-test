@@ -144,14 +144,11 @@ a { color: var(--color-accent); text-decoration: none; }
 .hero-call-btn .btn-text {
     position: relative;
     z-index: 2;
-    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
 .hero-call-btn .btn-circle-arrow {
     position: absolute;
     top: 50%;
-    left: calc(100% - 48px);
-    transform: translateY(-50%);
     width: 40px;
     height: 40px;
     border-radius: 50%;
@@ -160,11 +157,32 @@ a { color: var(--color-accent); text-decoration: none; }
     align-items: center;
     justify-content: center;
     z-index: 2;
-    transition: left 0.4s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
-.hero-call-btn:hover .btn-circle-arrow {
+/* Right circle (default visible) */
+.hero-call-btn .right-circle {
+    left: calc(100% - 48px);
+    transform: translateY(-50%) translateX(0);
+    opacity: 1;
+    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.3s ease;
+}
+
+.hero-call-btn:hover .right-circle {
+    transform: translateY(-50%) translateX(40px);
+    opacity: 0;
+}
+
+/* Left circle (default hidden) */
+.hero-call-btn .left-circle {
     left: 8px;
+    transform: translateY(-50%) translateX(-40px);
+    opacity: 0;
+    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.3s ease;
+}
+
+.hero-call-btn:hover .left-circle {
+    transform: translateY(-50%) translateX(0);
+    opacity: 1;
 }
 
 /* Sheen animation */
