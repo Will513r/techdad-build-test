@@ -230,8 +230,10 @@ include __DIR__ . '/includes/header.php';
     <div class="big-reviews-watermark">Reviews</div>
     <div class="container">
         <div class="text-center section-header">
-            <span class="section-subtitle">Customer Feedback</span>
-            <h2>What Asheville Homeowners Say</h2>
+            <div class="reviews-badge">
+                <span class="badge-dot"></span> What Asheville Homeowners Say
+            </div>
+            <h2>Customer Feedback</h2>
             <div class="rating-header">
                 <span class="rating-stars">★★★★★</span>
                 <span class="rating-txt"><strong>4.9 out of 5 stars</strong> based on 87 Google Reviews</span>
