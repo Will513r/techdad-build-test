@@ -495,17 +495,18 @@ img {
 }
 
 .hero-title {
-    font-size: 68px;
+    font-size: 70px;
     font-weight: 500;
     letter-spacing: -0.03em;
-    line-height: 0.9;
+    line-height: 1;
     margin-bottom: 20px;
     color: var(--color-white);
     animation: slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.15s both;
 }
 
 .hero-desc {
-    font-size: 18px;
+    font-size: 16px;
+    font-weight: 400px;
     color: #e2e8f0;
     margin-bottom: 35px;
     animation: slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.3s both;
@@ -516,6 +517,10 @@ img {
     gap: 15px;
     flex-wrap: wrap;
     animation: slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.45s both;
+}
+
+.hero-actions .btn {
+    border-radius: 9999px;
 }
 
 /* Trust Strip */

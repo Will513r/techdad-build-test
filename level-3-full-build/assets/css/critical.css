@@ -109,6 +109,9 @@ a { color: var(--color-accent); text-decoration: none; }
 .hero-actions {
     animation: slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.45s both;
 }
+.hero-actions .btn {
+    border-radius: 9999px;
+}
 
 @media (max-width: 768px) {
     .desktop-nav, .btn-phone-cta { display: none; }
