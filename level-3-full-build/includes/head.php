@@ -54,7 +54,7 @@ if (isset($meta['noindex']) && $meta['noindex'] === true) {
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <!-- CSS -->
     <?php
@@ -69,7 +69,7 @@ if (isset($meta['noindex']) && $meta['noindex'] === true) {
     <link rel="stylesheet" href="<?php echo SITE_URL; ?>/assets/css/style.css">
     
     <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="<?php echo SITE_URL; ?>/assets/images/logo/logo_1.webp">
+    <link rel="icon" type="image/x-icon" href="/assets/images/logo/logo_1.webp">
 
     <!-- Dynamic Schemas -->
     <?php
