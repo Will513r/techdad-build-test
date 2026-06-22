@@ -36,7 +36,6 @@ require_once __DIR__ . '/config.php';
                 <li><a href="<?php echo SITE_URL; ?>/" class="nav-link">Home</a></li>
                 <li><a href="<?php echo SITE_URL; ?>/services" class="nav-link">Services</a></li>
                 <li><a href="<?php echo SITE_URL; ?>/areas" class="nav-link">Areas Served</a></li>
-                <li><a href="<?php echo SITE_URL; ?>/reviews" class="nav-link">Reviews</a></li>
                 <li><a href="<?php echo SITE_URL; ?>/about" class="nav-link">About</a></li>
                 <li><a href="<?php echo SITE_URL; ?>/blog" class="nav-link">Blog</a></li>
                 <li><a href="<?php echo SITE_URL; ?>/contact" class="nav-link">Contact</a></li>
@@ -72,7 +71,6 @@ require_once __DIR__ . '/config.php';
                 <li><a href="<?php echo SITE_URL; ?>/" class="mobile-nav-link">Home</a></li>
                 <li><a href="<?php echo SITE_URL; ?>/services" class="mobile-nav-link">Services</a></li>
                 <li><a href="<?php echo SITE_URL; ?>/areas" class="mobile-nav-link">Areas Served</a></li>
-                <li><a href="<?php echo SITE_URL; ?>/reviews" class="mobile-nav-link">Reviews</a></li>
                 <li><a href="<?php echo SITE_URL; ?>/about" class="mobile-nav-link">About</a></li>
                 <li><a href="<?php echo SITE_URL; ?>/blog" class="mobile-nav-link">Blog</a></li>
                 <li><a href="<?php echo SITE_URL; ?>/contact" class="mobile-nav-link">Contact</a></li>
