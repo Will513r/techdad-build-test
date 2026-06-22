@@ -546,6 +546,86 @@ img {
     border-radius: 9999px;
 }
 
+.hero-call-btn {
+    position: relative;
+    overflow: hidden;
+    background-color: var(--color-white) !important;
+    color: var(--color-primary) !important;
+    border: 2px solid var(--color-white) !important;
+    padding: 16px 64px 16px 32px !important;
+    font-size: 16px;
+    font-weight: 700;
+    border-radius: 9999px;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
+    transition: padding 0.4s cubic-bezier(0.25, 1, 0.5, 1), background-color 0.3s, border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+}
+
+.hero-call-btn:hover {
+    padding: 16px 32px 16px 64px !important;
+    background-color: var(--color-white) !important;
+    border-color: var(--color-white) !important;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+    transform: translateY(-2px);
+}
+
+.hero-call-btn .btn-text {
+    position: relative;
+    z-index: 2;
+    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.hero-call-btn .btn-circle-arrow {
+    position: absolute;
+    top: 50%;
+    left: calc(100% - 48px);
+    transform: translateY(-50%);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #065f46;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+    transition: left 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.hero-call-btn:hover .btn-circle-arrow {
+    left: 8px;
+}
+
+/* Sheen animation */
+.hero-call-btn::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -150%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(
+        to right,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 0.5) 50%,
+        rgba(255, 255, 255, 0) 100%
+    );
+    transform: skewX(-25deg);
+    z-index: 3;
+    pointer-events: none;
+    animation: sheenSweep 4s infinite ease-in-out;
+}
+
+@keyframes sheenSweep {
+    0% {
+        left: -150%;
+    }
+    20% {
+        left: 150%;
+    }
+    100% {
+        left: 150%;
+    }
+}
+
 /* Trust Strip */
 .trust-strip {
     background-color: var(--color-primary-light);
