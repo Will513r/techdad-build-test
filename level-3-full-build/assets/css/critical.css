@@ -1,0 +1,76 @@
+/* Critical CSS - Summit Exterior Cleaning LLC */
+
+:root {
+    --color-primary: #0c1f2d;
+    --color-primary-light: #172d3e;
+    --color-primary-dark: #05101a;
+    --color-secondary: #374650;
+    --color-silver: #abb6ba;
+    --color-silver-light: #eef1f2;
+    --color-accent: #0d9488;
+    --color-accent-hover: #0f766e;
+    --color-accent-light: #ccfbf1;
+    --color-gold: #f59e0b;
+    --color-white: #ffffff;
+    --color-bg: #f8fafc;
+    --color-text: #334155;
+    --color-text-light: #64748b;
+    --color-border: #e2e8f0;
+    --container-width: 1200px;
+    --border-radius-md: 8px;
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --font-header: 'Outfit', 'Inter', sans-serif;
+    --font-body: 'Inter', sans-serif;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--color-text);
+    background-color: var(--color-bg);
+}
+h1, h2, h3 { font-family: var(--font-header); color: var(--color-primary); font-weight: 700; }
+a { color: var(--color-accent); text-decoration: none; }
+.container { width: 100%; max-width: var(--container-width); margin: 0 auto; padding: 0 20px; }
+
+/* Top bar and header */
+.top-bar {
+    background-color: var(--color-primary-dark);
+    color: #94a3b8;
+    font-size: 13px;
+    padding: 8px 0;
+    border-bottom: 1px solid #1e293b;
+}
+.top-bar-flex { display: flex; justify-content: space-between; align-items: center; }
+.main-header {
+    background-color: rgba(12, 31, 45, 0.95);
+    backdrop-filter: blur(10px);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    padding: 15px 0;
+    border-bottom: 1px solid #172d3e;
+}
+.header-flex { display: flex; justify-content: space-between; align-items: center; }
+.logo-link { display: flex; align-items: center; gap: 12px; }
+.logo-text { display: flex; flex-direction: column; }
+.logo-title { font-family: var(--font-header); font-size: 22px; font-weight: 800; color: var(--color-white); letter-spacing: 0.05em; }
+.logo-subtitle { font-size: 11px; text-transform: uppercase; letter-spacing: 0.15em; color: var(--color-silver); font-weight: 600; }
+.desktop-nav .nav-list { display: flex; list-style: none; gap: 25px; }
+.desktop-nav .nav-link { color: var(--color-white); font-weight: 500; font-size: 15px; }
+.btn { display: inline-flex; align-items: center; justify-content: center; font-family: var(--font-header); font-weight: 600; padding: 12px 24px; border-radius: var(--border-radius-md); border: 2px solid transparent; cursor: pointer; transition: var(--transition-smooth); }
+.btn-primary { background-color: var(--color-accent); color: var(--color-white); }
+.mobile-nav-toggle { display: none; background: transparent; border: none; cursor: pointer; flex-direction: column; gap: 6px; }
+
+/* Hero */
+.hero-section { background-size: cover; background-position: center; color: var(--color-white); position: relative; }
+.hero-container { padding: 120px 20px; display: flex; align-items: center; min-height: 520px; }
+.hero-content { max-width: 680px; }
+.hero-title { font-size: 48px; font-weight: 800; line-height: 1.15; margin-bottom: 20px; }
+
+@media (max-width: 768px) {
+    .desktop-nav, .btn-phone-cta { display: none; }
+    .mobile-nav-toggle { display: flex; }
+}

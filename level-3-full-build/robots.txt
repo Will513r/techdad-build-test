@@ -1,0 +1,11 @@
+# Robots.txt file for Summit Exterior Cleaning LLC
+User-agent: *
+Allow: /
+
+# Exclude API endpoints and private folders
+Disallow: /api/
+Disallow: /includes/
+Disallow: /data/
+
+# Sitemap Link
+Sitemap: http://localhost:8000/sitemap.xml
