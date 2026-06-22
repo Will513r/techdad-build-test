@@ -95,6 +95,8 @@ $footer_cities = require dirname(__DIR__) . '/data/cities.php';
     </div>
 </footer>
 
+<!-- GSAP Animation Library -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <!-- Core Script -->
 <script src="<?php echo SITE_URL; ?>/assets/js/main.js"></script>
 
