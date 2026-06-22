@@ -9,7 +9,7 @@ return [
         'name' => 'House Soft Washing',
         'headline' => 'Gentle Siding Cleaning That Cleans Deeper and Lasts Longer',
         'pricing' => '$0.15 - $0.30 per sq. ft.',
-        'short_desc' => 'Low-pressure wash that strips mildew, algae, and pollen off siding without forcing water behind it or cracking the surface.',
+        'short_desc' => 'Low-pressure soft washing that safely strips mildew, algae, and pollen off vinyl, stucco, and wood siding without forcing water behind panels or cracking delicate exterior surfaces.',
         'description' => 'Summit Exterior Cleaning provides safe, low-pressure soft washing for vinyl, HardiePlank, stucco, and wood siding. Unlike traditional high-pressure power washing, which can force water behind siding, cause moisture trapping, and crack surfaces, soft washing uses eco-friendly, biodegradable detergents to break down algae, mold, mildew, and dirt at the root. We then gently rinse it away with high-volume, low-pressure water (under 500 PSI) for a finish that is spotless and stays clean 2 to 3 times longer.',
         'why_us' => 'We never blast siding with high pressure. Detergent does the work at low pressure, so your siding finish lasts and nothing gets damaged.',
         'symptoms' => [
@@ -40,7 +40,7 @@ return [
         'name' => 'Roof Soft Washing',
         'headline' => 'Manufacturer-Approved Treatment to Remove Ugly Black Roof Streaks',
         'pricing' => '$350 - $900 per roof',
-        'short_desc' => 'Gentle, low-pressure treatment that kills the black streaks (gloeocapsa magma) on shingles and restores the roof\'s look.',
+        'short_desc' => 'Gentle, manufacturer-approved low-pressure treatment that kills destructive black algae streaks (gloeocapsa magma) on shingles, protecting your roof structure and restoring its original look.',
         'description' => 'Those black streaks on your roof are not just dirt — they are a form of blue-green algae called Gloeocapsa Magma that eats away at the limestone filler in asphalt shingles, weakening your roof structure and raising cooling costs. Our Roof Soft Washing treatment uses the exact low-pressure methodology recommended by the Asphalt Roofing Manufacturers Association (ARMA). We never walk on steep roofs or use high-pressure wands that blast away protective shingle granules, preserving your manufacturer\'s warranty and restoring curb appeal.',
         'why_us' => 'We never walk or pressure-wash a roof. Low-pressure treatment only — the method asphalt-shingle manufacturers actually recommend, so your warranty stays intact.',
         'symptoms' => [
@@ -70,7 +70,7 @@ return [
         'name' => 'Driveway & Concrete Cleaning',
         'headline' => 'Stripe-Free Surface Cleaning for Driveways, Patios, & Sidewalks',
         'pricing' => '$0.20 - $0.40 per sq. ft.',
-        'short_desc' => 'Even, stripe-free surface cleaning that lifts oil, dirt, and organic staining out of concrete, pavers, and walkways.',
+        'short_desc' => 'Professional-grade surface cleaning that lifts deep oil stains, dark organic growth, and dirt from concrete driveways, patios, and walkways, leaving a streak-free, bright, and slip-free finish.',
         'description' => 'Dirty concrete isn\'t just unsightly; organic buildup like mold and algae becomes slick and creates slip hazards when wet. We use professional-grade flat-surface cleaners rather than simple wand tips, ensuring an even, streak-free deep clean without the "zebra stripe" patterns left by amateurs. We pre-treat oil stains and rust markings with specialty surfactants, then deep clean using high-flow pressure to scour out pores, and finally apply an algaecide post-treatment to keep the surface bright and clean for months.',
         'why_us' => 'We use a flat surface cleaner for an even finish — no zebra-stripe wand marks — and pre-treat oil and rust before the pass.',
         'symptoms' => [
@@ -100,7 +100,7 @@ return [
         'name' => 'Gutter Brightening',
         'headline' => 'Detailed Hand-Washing to Restore Exterior Gutter Faces',
         'pricing' => '$150 - $300 per service',
-        'short_desc' => 'Removes the oxidation "tiger stripes" off the face of aluminum gutters and brings the finish back to near-new.',
+        'short_desc' => 'Detailed hand-washing and oxidation removal to clear ugly grey-black "tiger stripes" off aluminum gutter faces, restoring a crisp, bright white border line around your entire roof.',
         'description' => 'Over time, runoff water, roof asphalt oils, and airborne pollution react with the aluminum in gutters, causing unsightly grey-black vertical oxidation marks commonly called "tiger stripes." Traditional pressure washing cannot wash these off because they are chemically bonded to the paint. We apply specialized non-abrasive cleaners and hand-detail the gutter faces to gently dissolve the bonds of oxidation, bringing back their original bright white finish. We also clear debris from the troughs as part of our service.',
         'why_us' => 'Hand-detailed — we don\'t leave the bottom edges streaked, and we clear the troughs while we\'re up there.',
         'symptoms' => [

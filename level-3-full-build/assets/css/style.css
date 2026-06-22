@@ -1107,6 +1107,7 @@ img {
 .detail-title {
     font-size: 32px;
     font-weight: 500;
+    letter-spacing: -0.9px;
     color: var(--color-primary);
     margin-bottom: 20px;
 }
@@ -1121,12 +1122,13 @@ img {
 .detail-price-box {
     display: flex;
     flex-direction: column;
+    margin-top: auto;
     margin-bottom: 30px;
 }
 
 .price-label {
     font-size: 11px;
-    font-weight: 700;
+    font-weight: 500;
     letter-spacing: 0.05em;
     color: var(--color-text-light);
     text-transform: uppercase;
@@ -1135,8 +1137,9 @@ img {
 
 .price-value {
     font-size: 26px;
-    font-weight: 800;
+    font-weight: 600;
     color: var(--color-primary);
+    letter-spacing: -1.3px;
 }
 
 .detail-tags {

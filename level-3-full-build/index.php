@@ -196,7 +196,7 @@ include __DIR__ . '/includes/header.php';
                     <div class="service-detail-card" id="service-<?php echo $slug; ?>" data-service="<?php echo $slug; ?>">
                         <div class="detail-card-left">
                             <h3 class="detail-title"><?php echo htmlspecialchars($svc['name']); ?></h3>
-                            <p class="detail-desc"><?php echo htmlspecialchars($svc['description']); ?></p>
+                            <p class="detail-desc"><?php echo htmlspecialchars($svc['short_desc']); ?></p>
                             
                             <div class="detail-price-box">
                                 <span class="price-label">Starting Price</span>
@@ -207,10 +207,6 @@ include __DIR__ . '/includes/header.php';
                                 <?php foreach ($tags as $tag): ?>
                                     <span class="detail-tag"><?php echo htmlspecialchars($tag); ?></span>
                                 <?php endforeach; ?>
-                            </div>
-                            
-                            <div class="detail-action" style="margin-top: 35px;">
-                                <a href="<?php echo SITE_URL; ?>/services/<?php echo $slug; ?>" class="btn btn-primary">Book This Service</a>
                             </div>
                         </div>
                         
