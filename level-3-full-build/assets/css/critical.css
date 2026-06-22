@@ -65,8 +65,8 @@ a { color: var(--color-accent); text-decoration: none; }
 .desktop-nav { margin-left: auto; margin-right: 30px; }
 .desktop-nav .nav-list { display: flex; list-style: none; gap: 25px; }
 .desktop-nav .nav-link { color: var(--color-white); font-weight: 500; font-size: 15px; }
-.btn-phone-cta { background-color: #065f46; border-color: #065f46; color: var(--color-white); border-radius: 9999px; }
-.btn-phone-cta:hover { background-color: #047857; border-color: #047857; }
+.btn-phone-cta { background-color: #065f46; color: var(--color-white); border-radius: 9999px; }
+.btn-phone-cta:hover { background-color: #047857; }
 .btn { display: inline-flex; align-items: center; justify-content: center; font-family: var(--font-header); font-weight: 600; padding: 12px 24px; border-radius: var(--border-radius-md); border: 2px solid transparent; cursor: pointer; transition: var(--transition-smooth); }
 .btn-primary { background-color: var(--color-accent); color: var(--color-white); }
 .mobile-nav-toggle { display: none; background: transparent; border: none; cursor: pointer; flex-direction: column; gap: 6px; }
@@ -138,7 +138,6 @@ a { color: var(--color-accent); text-decoration: none; }
     background-color: var(--color-white) !important;
     border-color: var(--color-white) !important;
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
-    transform: translateY(-2px);
 }
 
 .hero-call-btn .btn-text {
@@ -162,26 +161,26 @@ a { color: var(--color-accent); text-decoration: none; }
 /* Right circle (default visible) */
 .hero-call-btn .right-circle {
     left: calc(100% - 48px);
-    transform: translateY(-50%) translateX(0);
+    transform: translateY(-50%) translateX(0) scale(1);
     opacity: 1;
     transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.3s ease;
 }
 
 .hero-call-btn:hover .right-circle {
-    transform: translateY(-50%) translateX(40px);
+    transform: translateY(-50%) translateX(40px) scale(0);
     opacity: 0;
 }
 
 /* Left circle (default hidden) */
 .hero-call-btn .left-circle {
     left: 8px;
-    transform: translateY(-50%) translateX(-40px);
+    transform: translateY(-50%) translateX(-40px) scale(0);
     opacity: 0;
     transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.3s ease;
 }
 
 .hero-call-btn:hover .left-circle {
-    transform: translateY(-50%) translateX(0);
+    transform: translateY(-50%) translateX(0) scale(1);
     opacity: 1;
 }
 
