@@ -1191,7 +1191,7 @@ img {
 .reviews-section {
     position: relative;
     overflow: hidden;
-    background-color: var(--color-white);
+    background-color: var(--color-bg);
 }
 
 .reviews-section .container {
@@ -1203,7 +1203,7 @@ img {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    background-color: var(--color-bg);
+    background-color: var(--color-white);
     border: 1px solid var(--color-border);
     color: var(--color-text);
     padding: 6px 14px;
@@ -1231,9 +1231,6 @@ img {
     font-size: clamp(80px, 20vw, 280px);
     font-weight: 900;
     color: var(--color-primary);
-    opacity: 0.04; /* Keep it subtle at 4% for design polish, wait, user wants 30 percent opacity! */
-    /* Wait! The user prompt says: "add a big Reviews heading and give it a 30 percent opacity" */
-    /* Let's make sure it is exactly 30 percent opacity to strictly follow the instruction. */
     opacity: 0.3;
     letter-spacing: -3px;
     line-height: 1;
@@ -1242,6 +1239,15 @@ img {
     z-index: 1;
     text-transform: uppercase;
     white-space: nowrap;
+}
+
+.reviews-inner-box {
+    background-color: var(--color-white);
+    padding: 50px 40px;
+    border-radius: var(--border-radius-lg);
+    border: 1px solid var(--color-border);
+    box-shadow: 0 10px 40px rgba(12, 31, 45, 0.03);
+    margin-top: 10px;
 }
 
 .rating-header {
@@ -1267,15 +1273,15 @@ img {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 30px;
-    margin-top: 40px;
+    margin-top: 0;
 }
 
 .review-card {
-    background-color: var(--color-white);
+    background-color: var(--color-bg);
     padding: 30px;
     border: 1px solid var(--color-border);
     border-radius: var(--border-radius-md);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
+    box-shadow: none;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -2649,6 +2655,9 @@ img {
     }
     .service-cities-links-grid {
         grid-template-columns: 1fr;
+    }
+    .reviews-inner-box {
+        padding: 30px 20px;
     }
 }
 

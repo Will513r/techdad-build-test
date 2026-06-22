@@ -235,31 +235,33 @@ include __DIR__ . '/includes/header.php';
             </div>
         </div>
         
-        <div class="reviews-grid">
-            <?php foreach ($reviews as $rev): ?>
-                <div class="review-card">
-                    <div class="review-top-meta">
-                        <div class="review-avatar">
-                            <?php echo strtoupper(substr($rev['author'], 0, 1)); ?>
+        <div class="reviews-inner-box">
+            <div class="reviews-grid">
+                <?php foreach ($reviews as $rev): ?>
+                    <div class="review-card">
+                        <div class="review-top-meta">
+                            <div class="review-avatar">
+                                <?php echo strtoupper(substr($rev['author'], 0, 1)); ?>
+                            </div>
+                            <div class="review-author-info">
+                                <span class="review-author"><?php echo htmlspecialchars($rev['author']); ?></span>
+                                <span class="review-location"><?php echo htmlspecialchars($rev['location_name']); ?>, NC</span>
+                            </div>
+                            <div class="review-stars-wrapper">
+                                <span class="review-stars">★★★★★</span>
+                            </div>
                         </div>
-                        <div class="review-author-info">
-                            <span class="review-author"><?php echo htmlspecialchars($rev['author']); ?></span>
-                            <span class="review-location"><?php echo htmlspecialchars($rev['location_name']); ?>, NC</span>
-                        </div>
-                        <div class="review-stars-wrapper">
-                            <span class="review-stars">★★★★★</span>
+                        <p class="review-text">"<?php echo htmlspecialchars($rev['text']); ?>"</p>
+                        <div class="review-footer">
+                            <span class="review-tag"><?php echo htmlspecialchars($services[$rev['service']]['name'] ?? 'Exterior Cleaning'); ?></span>
+                            <span class="review-verified-badge">
+                                <svg class="verified-icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" style="vertical-align: middle; margin-right: 3px;"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                Verified
+                            </span>
                         </div>
                     </div>
-                    <p class="review-text">"<?php echo htmlspecialchars($rev['text']); ?>"</p>
-                    <div class="review-footer">
-                        <span class="review-tag"><?php echo htmlspecialchars($services[$rev['service']]['name'] ?? 'Exterior Cleaning'); ?></span>
-                        <span class="review-verified-badge">
-                            <svg class="verified-icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" style="vertical-align: middle; margin-right: 3px;"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                            Verified
-                        </span>
-                    </div>
-                </div>
-            <?php endforeach; ?>
+                <?php endforeach; ?>
+            </div>
         </div>
     </div>
 </section>
