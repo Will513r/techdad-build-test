@@ -479,18 +479,19 @@ img {
 }
 
 .hero-tagline {
-    display: inline-block;
-    background-color: rgba(13, 148, 136, 0.2);
-    border: 1px solid rgba(13, 148, 136, 0.4);
-    color: #2dd4bf;
-    padding: 6px 12px;
-    font-size: 13px;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    font-weight: 700;
-    border-radius: 50px;
-    margin-bottom: 20px;
+    display: block;
+    color: var(--color-white);
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1.4;
+    text-transform: none;
+    letter-spacing: normal;
+    margin-bottom: 24px;
     animation: slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.hero-tagline-sub {
+    opacity: 0.7;
 }
 
 .hero-title {
