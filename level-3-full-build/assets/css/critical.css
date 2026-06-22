@@ -37,11 +37,11 @@ a { color: var(--color-accent); text-decoration: none; }
 
 /* Top bar and header */
 .top-bar {
-    background-color: var(--color-primary-dark);
-    color: #94a3b8;
+    background-color: #065f46;
+    color: #e2e8f0;
     font-size: 13px;
     padding: 8px 0;
-    border-bottom: 1px solid #1e293b;
+    border-bottom: 1px solid #047857;
 }
 .top-bar-flex { display: flex; justify-content: space-between; align-items: center; }
 .main-header {

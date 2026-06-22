@@ -242,11 +242,11 @@ img {
 
 /* Header Styles */
 .top-bar {
-    background-color: var(--color-primary-dark);
-    color: #94a3b8;
+    background-color: #065f46; /* Rich emerald green background */
+    color: #e2e8f0;
     font-size: 13px;
     padding: 8px 0;
-    border-bottom: 1px solid #1e293b;
+    border-bottom: 1px solid #047857;
 }
 
 .top-bar-flex {
@@ -257,16 +257,16 @@ img {
 
 .top-bar-divider {
     margin: 0 10px;
-    color: #334155;
+    color: #047857;
 }
 
 .top-bar-link {
-    color: #cbd5e1;
-    font-weight: 500;
+    color: #ffffff;
+    font-weight: 600;
 }
 
 .top-bar-link:hover {
-    color: var(--color-accent);
+    color: #a7f3d0; /* Mint green hover color */
 }
 
 .main-header {
