@@ -254,26 +254,47 @@ include __DIR__ . '/includes/header.php';
                 </div>
             </div>
 
-            <!-- Center card (dark, elevated, with photo) -->
-            <div class="review-card review-card--featured">
-                <div class="review-card-photo">
-                    <img src="<?php echo SITE_URL; ?>/<?php echo $services[$reviews[1]['service']]['photos'][0]; ?>" alt="<?php echo htmlspecialchars($services[$reviews[1]['service']]['name']); ?>">
-                </div>
-                <div class="review-card-featured-body">
-                    <span class="review-card-service"><?php echo htmlspecialchars($services[$reviews[1]['service']]['name'] ?? 'Exterior Cleaning'); ?></span>
-                    <p class="review-text">"<?php echo htmlspecialchars($reviews[1]['text']); ?>"</p>
-                    <div class="review-card-footer">
-                        <div class="review-avatar review-avatar--dark"><?php echo strtoupper(substr($reviews[1]['author'], 0, 1)); ?></div>
-                        <div class="review-author-info">
-                            <span class="review-author"><?php echo htmlspecialchars($reviews[1]['author']); ?></span>
-                            <span class="review-location"><?php echo strtoupper(htmlspecialchars($reviews[1]['location_name'])); ?>, NC</span>
+            <!-- Center column: two stacked dark cards (no photo) -->
+            <div class="reviews-center-col">
+
+                <!-- Top center card: review[3] -->
+                <div class="review-card review-card--featured">
+                    <div class="review-card-featured-body">
+                        <span class="review-card-service"><?php echo htmlspecialchars($services[$reviews[3]['service']]['name'] ?? 'Exterior Cleaning'); ?></span>
+                        <p class="review-text">"<?php echo htmlspecialchars($reviews[3]['text']); ?>"</p>
+                        <div class="review-card-footer">
+                            <div class="review-avatar review-avatar--dark"><?php echo strtoupper(substr($reviews[3]['author'], 0, 1)); ?></div>
+                            <div class="review-author-info">
+                                <span class="review-author"><?php echo htmlspecialchars($reviews[3]['author']); ?></span>
+                                <span class="review-location"><?php echo strtoupper(htmlspecialchars($reviews[3]['location_name'])); ?>, NC</span>
+                            </div>
+                            <span class="review-verified-badge review-verified-badge--accent">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                            </span>
                         </div>
-                        <span class="review-verified-badge review-verified-badge--accent">
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                        </span>
                     </div>
                 </div>
+
+                <!-- Bottom center card: review[1] -->
+                <div class="review-card review-card--featured">
+                    <div class="review-card-featured-body">
+                        <span class="review-card-service"><?php echo htmlspecialchars($services[$reviews[1]['service']]['name'] ?? 'Exterior Cleaning'); ?></span>
+                        <p class="review-text">"<?php echo htmlspecialchars($reviews[1]['text']); ?>"</p>
+                        <div class="review-card-footer">
+                            <div class="review-avatar review-avatar--dark"><?php echo strtoupper(substr($reviews[1]['author'], 0, 1)); ?></div>
+                            <div class="review-author-info">
+                                <span class="review-author"><?php echo htmlspecialchars($reviews[1]['author']); ?></span>
+                                <span class="review-location"><?php echo strtoupper(htmlspecialchars($reviews[1]['location_name'])); ?>, NC</span>
+                            </div>
+                            <span class="review-verified-badge review-verified-badge--accent">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
             </div>
+
 
             <!-- Right card (white, sits lower) -->
             <div class="review-card review-card--side review-card--right">
