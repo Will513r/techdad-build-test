@@ -65,7 +65,8 @@ a { color: var(--color-accent); text-decoration: none; }
 .desktop-nav { margin-left: auto; margin-right: 30px; }
 .desktop-nav .nav-list { display: flex; list-style: none; gap: 25px; }
 .desktop-nav .nav-link { color: var(--color-white); font-weight: 500; font-size: 15px; }
-.btn-phone-cta { border-radius: 9999px; }
+.btn-phone-cta { background-color: #065f46; border-color: #065f46; color: var(--color-white); border-radius: 9999px; }
+.btn-phone-cta:hover { background-color: #047857; border-color: #047857; }
 .btn { display: inline-flex; align-items: center; justify-content: center; font-family: var(--font-header); font-weight: 600; padding: 12px 24px; border-radius: var(--border-radius-md); border: 2px solid transparent; cursor: pointer; transition: var(--transition-smooth); }
 .btn-primary { background-color: var(--color-accent); color: var(--color-white); }
 .mobile-nav-toggle { display: none; background: transparent; border: none; cursor: pointer; flex-direction: column; gap: 6px; }

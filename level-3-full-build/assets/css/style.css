@@ -356,7 +356,16 @@ img {
 }
 
 .btn-phone-cta {
+    background-color: #065f46;
+    border-color: #065f46;
+    color: var(--color-white);
     border-radius: 9999px;
+}
+
+.btn-phone-cta:hover {
+    background-color: #047857;
+    border-color: #047857;
+    box-shadow: 0 4px 12px rgba(6, 95, 70, 0.3);
 }
 
 .mobile-nav-toggle {
