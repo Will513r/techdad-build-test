@@ -28,8 +28,8 @@ include __DIR__ . '/includes/header.php';
 <section class="hero-section" style="background-image: linear-gradient(rgba(12, 31, 45, 0.8), rgba(12, 31, 45, 0.85)), url('<?php echo SITE_URL; ?>/assets/images/general/general_1.webp');">
     <div class="container hero-container">
         <div class="hero-content">
-            <span class="hero-tagline">An independent, reliable, affordable and <br><span class="hero-tagline-sub">eco-friendly cleaning solution</span></span>
-            <h1 class="hero-title">Pressure Washing in Asheville, NC — Restored Safely with Soft Washing</h1>
+            <span class="hero-tagline">An independent, Reliable, Affordable and <br><span class="hero-tagline-sub">eco-friendly cleaning solution</span></span>
+            <h1 class="hero-title">Elevate your <br> space with expert cleaning.</h1>
             <p class="hero-desc">We use safe, low-pressure soft washing and detergent-driven cleaning to keep Asheville homes and businesses looking pristine. Protect your siding and shingles from damage with results that last 2-3x longer than power washing.</p>
             <div class="hero-actions">
                 <a href="tel:<?php echo PHONE_TEL; ?>" class="btn btn-accent btn-large">

@@ -19,7 +19,7 @@
     --container-width: 1200px;
     --border-radius-md: 8px;
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    --font-header: 'Geist', 'Inter', sans-serif;
+    --font-header: 'Archivo', 'Inter', sans-serif;
     --font-body: 'Inter', sans-serif;
 }
 
