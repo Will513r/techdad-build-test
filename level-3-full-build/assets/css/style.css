@@ -1206,7 +1206,17 @@ img {
     width: 96%;
 }
 
-/* Pill badge */
+/* Inner padded frame that houses the badge + cards */
+.reviews-inner-wrap {
+    background-color: var(--color-white);
+    border-radius: 20px;
+    padding: 50px 40px 0;
+    position: relative;
+    overflow: visible;               /* Let cards overflow bottom */
+    box-shadow: 0 4px 30px rgba(12, 31, 45, 0.04);
+}
+
+
 .reviews-badge {
     display: inline-flex;
     align-items: center;
