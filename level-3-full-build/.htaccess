@@ -1,0 +1,47 @@
+# Apache Rewrite Engine Configurations
+RewriteEngine On
+RewriteBase /
+
+# Force HTTPS in production (commented out by default for local testing, but active for review)
+# RewriteCond %{HTTPS} off
+# RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# Remove Trailing Slashes (Canonical URLs)
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_URI} (.+)/$
+RewriteRule ^ %1 [R=301,L]
+
+# Legacy Redirects (Bonus: 301 Redirects of old paths)
+RewriteRule ^services/housewashing(\.php)?$ /services/house-soft-washing [R=301,L]
+RewriteRule ^services/roofwashing(\.php)?$ /services/roof-soft-washing [R=301,L]
+RewriteRule ^services/concretewashing(\.php)?$ /services/concrete-cleaning [R=301,L]
+RewriteRule ^services/gutterwashing(\.php)?$ /services/gutter-brightening [R=301,L]
+RewriteRule ^house-washing(\.php)?$ /services/house-soft-washing [R=301,L]
+
+# Core pages mapping
+RewriteRule ^about$ about.php [L,QSA]
+RewriteRule ^contact$ contact.php [L,QSA]
+RewriteRule ^reviews$ reviews.php [L,QSA]
+RewriteRule ^areas$ areas-we-serve.php [L,QSA]
+
+# Blog routing
+RewriteRule ^blog$ blog/index.php [L,QSA]
+RewriteRule ^blog/([a-zA-Z0-9-]+)$ blog/post-template.php?slug=$1 [L,QSA]
+
+# Services routing
+RewriteRule ^services$ services/index.php [L,QSA]
+# Service hub (e.g. /services/house-soft-washing)
+RewriteRule ^services/([a-zA-Z0-9-]+)$ services/service-template.php?service=$1 [L,QSA]
+# Service-in-city (e.g. /services/house-soft-washing/asheville)
+RewriteRule ^services/([a-zA-Z0-9-]+)/([a-zA-Z0-9-]+)$ services/service-template.php?service=$1&city=$2 [L,QSA]
+
+# Sitemap routing
+RewriteRule ^sitemap\.xml$ sitemap.php [L]
+
+# Custom 404 Error Documents
+ErrorDocument 404 /404.php
+
+# Fallback Rewrite for Missing Files (captures sub-path 404s cleanly)
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ 404.php [L]
