@@ -1206,17 +1206,7 @@ img {
     width: 96%;
 }
 
-/* Inner padded frame that houses the badge + cards */
-.reviews-inner-wrap {
-    background-color: var(--color-white);
-    border-radius: 20px;
-    padding: 50px 40px 0;
-    position: relative;
-    overflow: visible;               /* Let cards overflow bottom */
-    box-shadow: 0 4px 30px rgba(12, 31, 45, 0.04);
-}
-
-
+/* Pill badge */
 .reviews-badge {
     display: inline-flex;
     align-items: center;
@@ -1292,7 +1282,7 @@ img {
 
 /* ---- Side cards (white, sit lower) ---- */
 .review-card--side {
-    background-color: var(--color-white);
+    background-color: rgb(239, 239, 239);
     padding: 30px;
     margin-top: 80px;              /* Push sides down so center feels raised */
 }
@@ -2721,5 +2711,250 @@ img {
     }
     .ba-slider-container {
         height: 240px;
+    }
+}
+
+/* ============================================================
+   Estimate Section — Full Bleed Photo + Glass Panel
+   ============================================================ */
+.estimate-fullbleed {
+    position: relative;
+    min-height: 620px;
+    display: flex;
+    align-items: stretch;
+    overflow: hidden;
+}
+
+/* Background photo fills the whole section */
+.estimate-bg {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center 30%;
+    z-index: 0;
+}
+
+/* Dark photo overlay */
+.estimate-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        to right,
+        rgba(8, 20, 30, 0.72) 0%,
+        rgba(8, 20, 30, 0.55) 45%,
+        rgba(8, 20, 30, 0.82) 100%
+    );
+    z-index: 1;
+}
+
+/* Two-column flex: headline left, panel right */
+.estimate-inner {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 80px 40px;
+    gap: 60px;
+}
+
+/* Left — headline block */
+.estimate-headline {
+    flex: 1 1 40%;
+    color: var(--color-white);
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.estimate-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background-color: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    color: var(--color-white);
+    padding: 6px 14px;
+    border-radius: 9999px;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    width: fit-content;
+}
+
+.estimate-title {
+    font-family: var(--font-header);
+    font-size: clamp(26px, 3.5vw, 42px);
+    font-weight: 800;
+    line-height: 1.2;
+    color: var(--color-white);
+    margin: 0;
+}
+
+.estimate-title em {
+    font-style: normal;
+    color: var(--color-accent);
+}
+
+.estimate-trust-row {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.estimate-trust-badge {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background-color: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    padding: 8px 16px;
+    border-radius: 9999px;
+    font-size: 12px;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.85);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    width: fit-content;
+}
+
+.estimate-trust-badge svg {
+    color: var(--color-accent);
+    flex-shrink: 0;
+}
+
+/* Right — glass form panel */
+.estimate-panel {
+    flex: 1 1 52%;
+    background-color: rgba(18, 32, 46, 0.82);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    padding: 36px 32px;
+}
+
+/* Section labels above groups */
+.estimate-field-group-label {
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.45);
+    margin: 0 0 10px 0;
+}
+
+/* 2-col input row */
+.estimate-form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+/* Inputs, selects, textarea */
+.estimate-input {
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.07);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 8px;
+    color: var(--color-white);
+    font-family: var(--font-body);
+    font-size: 14px;
+    padding: 11px 14px;
+    outline: none;
+    transition: border-color 0.2s, background-color 0.2s;
+    -webkit-appearance: none;
+    appearance: none;
+    box-sizing: border-box;
+}
+
+.estimate-input::placeholder {
+    color: rgba(255, 255, 255, 0.35);
+}
+
+.estimate-input:focus {
+    border-color: var(--color-accent);
+    background-color: rgba(255, 255, 255, 0.11);
+}
+
+.estimate-input option {
+    background-color: #12202e;
+    color: var(--color-white);
+}
+
+.estimate-textarea {
+    resize: vertical;
+    min-height: 80px;
+    display: block;
+    margin-bottom: 12px;
+}
+
+/* Disclaimer */
+.estimate-disclaimer {
+    font-size: 11px;
+    color: rgba(255, 255, 255, 0.38);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    margin: 0 0 16px 0;
+    line-height: 1.5;
+}
+
+/* Yellow CTA button */
+.estimate-submit-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    padding: 14px 24px;
+    background-color: var(--color-accent);
+    color: var(--color-primary);
+    font-family: var(--font-header);
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    border: none;
+    border-radius: 9999px;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.15s;
+}
+
+.estimate-submit-btn:hover {
+    background-color: #d4c200;
+    transform: translateY(-2px);
+}
+
+.estimate-submit-btn span {
+    font-size: 18px;
+    line-height: 1;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+    .estimate-inner {
+        flex-direction: column;
+        padding: 60px 24px;
+        gap: 40px;
+    }
+    .estimate-headline {
+        flex: none;
+    }
+    .estimate-panel {
+        flex: none;
+        width: 100%;
+    }
+}
+
+@media (max-width: 600px) {
+    .estimate-form-row {
+        grid-template-columns: 1fr;
+    }
+    .estimate-inner {
+        padding: 50px 16px;
     }
 }

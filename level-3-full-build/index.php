@@ -229,190 +229,175 @@ include __DIR__ . '/includes/header.php';
 <section class="reviews-section">
     <div class="big-reviews-watermark">Reviews</div>
     <div class="container">
-        <div class="reviews-inner-wrap">
+        <div class="reviews-section-header">
+            <div class="reviews-badge">
+                <span class="badge-dot"></span> What Asheville Homeowners Say
+            </div>
+        </div>
 
-            <div class="reviews-section-header">
-                <div class="reviews-badge">
-                    <span class="badge-dot"></span> What Asheville Homeowners Say
+        <!-- Staggered 3-card layout -->
+        <div class="reviews-stagger-grid">
+
+            <!-- Left card (white, sits lower) -->
+            <div class="review-card review-card--side review-card--left">
+                <span class="review-card-service"><?php echo htmlspecialchars($services[$reviews[0]['service']]['name'] ?? 'Exterior Cleaning'); ?></span>
+                <p class="review-text">"<?php echo htmlspecialchars($reviews[0]['text']); ?>"</p>
+                <div class="review-card-footer">
+                    <div class="review-avatar"><?php echo strtoupper(substr($reviews[0]['author'], 0, 1)); ?></div>
+                    <div class="review-author-info">
+                        <span class="review-author"><?php echo htmlspecialchars($reviews[0]['author']); ?></span>
+                        <span class="review-location"><?php echo strtoupper(htmlspecialchars($reviews[0]['location_name'])); ?>, NC</span>
+                    </div>
+                    <span class="review-verified-badge">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                    </span>
                 </div>
             </div>
 
-            <!-- Staggered 3-card layout -->
-            <div class="reviews-stagger-grid">
+            <!-- Center column: two stacked dark cards (no photo) -->
+            <div class="reviews-center-col">
 
-                <!-- Left card (white, sits lower) -->
-                <div class="review-card review-card--side review-card--left">
-                    <span class="review-card-service"><?php echo htmlspecialchars($services[$reviews[0]['service']]['name'] ?? 'Exterior Cleaning'); ?></span>
-                    <p class="review-text">"<?php echo htmlspecialchars($reviews[0]['text']); ?>"</p>
-                    <div class="review-card-footer">
-                        <div class="review-avatar"><?php echo strtoupper(substr($reviews[0]['author'], 0, 1)); ?></div>
-                        <div class="review-author-info">
-                            <span class="review-author"><?php echo htmlspecialchars($reviews[0]['author']); ?></span>
-                            <span class="review-location"><?php echo strtoupper(htmlspecialchars($reviews[0]['location_name'])); ?>, NC</span>
-                        </div>
-                        <span class="review-verified-badge">
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                        </span>
-                    </div>
-                </div>
-
-                <!-- Center column: two stacked dark cards (no photo) -->
-                <div class="reviews-center-col">
-
-                    <!-- Top center card: review[3] -->
-                    <div class="review-card review-card--featured">
-                        <div class="review-card-featured-body">
-                            <span class="review-card-service"><?php echo htmlspecialchars($services[$reviews[3]['service']]['name'] ?? 'Exterior Cleaning'); ?></span>
-                            <p class="review-text">"<?php echo htmlspecialchars($reviews[3]['text']); ?>"</p>
-                            <div class="review-card-footer">
-                                <div class="review-avatar review-avatar--dark"><?php echo strtoupper(substr($reviews[3]['author'], 0, 1)); ?></div>
-                                <div class="review-author-info">
-                                    <span class="review-author"><?php echo htmlspecialchars($reviews[3]['author']); ?></span>
-                                    <span class="review-location"><?php echo strtoupper(htmlspecialchars($reviews[3]['location_name'])); ?>, NC</span>
-                                </div>
-                                <span class="review-verified-badge review-verified-badge--accent">
-                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                                </span>
+                <!-- Top center card: review[3] -->
+                <div class="review-card review-card--featured">
+                    <div class="review-card-featured-body">
+                        <span class="review-card-service"><?php echo htmlspecialchars($services[$reviews[3]['service']]['name'] ?? 'Exterior Cleaning'); ?></span>
+                        <p class="review-text">"<?php echo htmlspecialchars($reviews[3]['text']); ?>"</p>
+                        <div class="review-card-footer">
+                            <div class="review-avatar review-avatar--dark"><?php echo strtoupper(substr($reviews[3]['author'], 0, 1)); ?></div>
+                            <div class="review-author-info">
+                                <span class="review-author"><?php echo htmlspecialchars($reviews[3]['author']); ?></span>
+                                <span class="review-location"><?php echo strtoupper(htmlspecialchars($reviews[3]['location_name'])); ?>, NC</span>
                             </div>
+                            <span class="review-verified-badge review-verified-badge--accent">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                            </span>
                         </div>
                     </div>
+                </div>
 
-                    <!-- Bottom center card: review[1] -->
-                    <div class="review-card review-card--featured">
-                        <div class="review-card-featured-body">
-                            <span class="review-card-service"><?php echo htmlspecialchars($services[$reviews[1]['service']]['name'] ?? 'Exterior Cleaning'); ?></span>
-                            <p class="review-text">"<?php echo htmlspecialchars($reviews[1]['text']); ?>"</p>
-                            <div class="review-card-footer">
-                                <div class="review-avatar review-avatar--dark"><?php echo strtoupper(substr($reviews[1]['author'], 0, 1)); ?></div>
-                                <div class="review-author-info">
-                                    <span class="review-author"><?php echo htmlspecialchars($reviews[1]['author']); ?></span>
-                                    <span class="review-location"><?php echo strtoupper(htmlspecialchars($reviews[1]['location_name'])); ?>, NC</span>
-                                </div>
-                                <span class="review-verified-badge review-verified-badge--accent">
-                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                                </span>
+                <!-- Bottom center card: review[1] -->
+                <div class="review-card review-card--featured">
+                    <div class="review-card-featured-body">
+                        <span class="review-card-service"><?php echo htmlspecialchars($services[$reviews[1]['service']]['name'] ?? 'Exterior Cleaning'); ?></span>
+                        <p class="review-text">"<?php echo htmlspecialchars($reviews[1]['text']); ?>"</p>
+                        <div class="review-card-footer">
+                            <div class="review-avatar review-avatar--dark"><?php echo strtoupper(substr($reviews[1]['author'], 0, 1)); ?></div>
+                            <div class="review-author-info">
+                                <span class="review-author"><?php echo htmlspecialchars($reviews[1]['author']); ?></span>
+                                <span class="review-location"><?php echo strtoupper(htmlspecialchars($reviews[1]['location_name'])); ?>, NC</span>
                             </div>
+                            <span class="review-verified-badge review-verified-badge--accent">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                            </span>
                         </div>
-                    </div>
-
-                </div>
-
-                <!-- Right card (white, sits lower) -->
-                <div class="review-card review-card--side review-card--right">
-                    <span class="review-card-service"><?php echo htmlspecialchars($services[$reviews[2]['service']]['name'] ?? 'Exterior Cleaning'); ?></span>
-                    <p class="review-text">"<?php echo htmlspecialchars($reviews[2]['text']); ?>"</p>
-                    <div class="review-card-footer">
-                        <div class="review-avatar"><?php echo strtoupper(substr($reviews[2]['author'], 0, 1)); ?></div>
-                        <div class="review-author-info">
-                            <span class="review-author"><?php echo htmlspecialchars($reviews[2]['author']); ?></span>
-                            <span class="review-location"><?php echo strtoupper(htmlspecialchars($reviews[2]['location_name'])); ?>, NC</span>
-                        </div>
-                        <span class="review-verified-badge">
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                        </span>
                     </div>
                 </div>
 
-            </div><!-- /.reviews-stagger-grid -->
+            </div>
 
-        </div><!-- /.reviews-inner-wrap -->
-    </div><!-- /.container -->
+
+            <!-- Right card (white, sits lower) -->
+            <div class="review-card review-card--side review-card--right">
+                <span class="review-card-service"><?php echo htmlspecialchars($services[$reviews[2]['service']]['name'] ?? 'Exterior Cleaning'); ?></span>
+                <p class="review-text">"<?php echo htmlspecialchars($reviews[2]['text']); ?>"</p>
+                <div class="review-card-footer">
+                    <div class="review-avatar"><?php echo strtoupper(substr($reviews[2]['author'], 0, 1)); ?></div>
+                    <div class="review-author-info">
+                        <span class="review-author"><?php echo htmlspecialchars($reviews[2]['author']); ?></span>
+                        <span class="review-location"><?php echo strtoupper(htmlspecialchars($reviews[2]['location_name'])); ?>, NC</span>
+                    </div>
+                    <span class="review-verified-badge">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                    </span>
+                </div>
+            </div>
+
+        </div>
+    </div>
 </section>
 
 <!-- CTA Banner -->
-
 <?php include __DIR__ . '/includes/contact-strip.php'; ?>
 
-<!-- Contact Form Section -->
-<section id="estimate-section" class="contact-section section-padding bg-light">
-    <div class="container contact-container">
-        <div class="contact-info-block">
-            <span class="section-subtitle">Get A Free Quote</span>
-            <h2>Get Your Instant Estimate Inquiry</h2>
-            <p>Ready to wash away years of algae, mildew, and dirt? Fill out our form below, and owner Mike Reyes will get back to you with a free, no-obligation pricing estimate.</p>
-            
-            <div class="contact-methods">
-                <div class="c-method">
-                    <span class="c-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg></span>
-                    <div>
-                        <strong>Call Mike directly:</strong>
-                        <a href="tel:<?php echo PHONE_TEL; ?>" class="c-link"><?php echo PHONE_DISPLAY; ?></a>
-                    </div>
-                </div>
-                <div class="c-method">
-                    <span class="c-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg></span>
-                    <div>
-                        <strong>Email us:</strong>
-                        <a href="mailto:<?php echo EMAIL_ADDRESS; ?>" class="c-link"><?php echo EMAIL_ADDRESS; ?></a>
-                    </div>
-                </div>
+<!-- Contact Form Section — Full Bleed Photo + Glass Panel -->
+<section id="estimate-section" class="estimate-fullbleed">
+
+    <!-- Background photo layer -->
+    <div class="estimate-bg" style="background-image: url('<?php echo SITE_URL; ?>/assets/images/general/general_1.webp');"></div>
+    <div class="estimate-overlay"></div>
+
+    <!-- Content wrapper -->
+    <div class="estimate-inner">
+
+        <!-- Left: headline -->
+        <div class="estimate-headline">
+            <div class="estimate-pill">
+                <span class="badge-dot" style="background:#ef4444;"></span>
+                Get A Free Quote
             </div>
-            
-            <div class="guarantee-box rounded-lg">
-                <strong>Our Promise:</strong>
-                <p>No high-pressure sales calls, no spam. Just a straight-talking assessment of your property\'s cleaning needs.</p>
+            <h2 class="estimate-title">Get a free estimate from Asheville's <em>most trusted exterior cleaners.</em></h2>
+
+            <div class="estimate-trust-row">
+                <div class="estimate-trust-badge">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                    <span>5-Star Google Rating</span>
+                </div>
+                <div class="estimate-trust-badge">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                    <span>Fully Insured</span>
+                </div>
             </div>
         </div>
-        
-        <div class="contact-form-block rounded-lg shadow-md bg-white">
+
+        <!-- Right: glass form panel -->
+        <div class="estimate-panel">
+
             <form id="leadForm" action="<?php echo SITE_URL; ?>/api/submit-lead.php" method="POST">
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="name">Your Name <span class="required">*</span></label>
-                        <input type="text" id="name" name="name" required class="form-control" placeholder="John Doe">
-                        <span class="error-msg" id="name-error"></span>
-                    </div>
+
+                <p class="estimate-field-group-label">CONTACT DETAILS</p>
+                <div class="estimate-form-row">
+                    <input type="text" id="name" name="name" required class="estimate-input" placeholder="Your Name">
+                    <input type="tel" id="phone" name="phone" required class="estimate-input" placeholder="Phone Number">
                 </div>
-                <div class="form-row flex-row">
-                    <div class="form-group flex-1">
-                        <label for="phone">Phone Number <span class="required">*</span></label>
-                        <input type="tel" id="phone" name="phone" required class="form-control" placeholder="(828) 555-0142">
-                        <span class="error-msg" id="phone-error"></span>
-                    </div>
-                    <div class="form-group flex-1">
-                        <label for="email">Email Address <span class="required">*</span></label>
-                        <input type="email" id="email" name="email" required class="form-control" placeholder="john@example.com">
-                        <span class="error-msg" id="email-error"></span>
-                    </div>
+                <div class="estimate-form-row">
+                    <input type="email" id="email" name="email" required class="estimate-input" placeholder="Email Address">
+                    <input type="text" id="address" name="address" class="estimate-input" placeholder="Property Address (optional)">
                 </div>
-                <div class="form-row flex-row">
-                    <div class="form-group flex-1">
-                        <label for="service">Service Needed <span class="required">*</span></label>
-                        <select id="service" name="service" required class="form-control">
-                            <option value="">-- Select Service --</option>
-                            <?php foreach ($services as $slug => $svc): ?>
-                                <option value="<?php echo $slug; ?>"><?php echo htmlspecialchars($svc['name']); ?></option>
-                            <?php endforeach; ?>
-                        </select>
-                        <span class="error-msg" id="service-error"></span>
-                    </div>
-                    <div class="form-group flex-1">
-                        <label for="city">Your City <span class="required">*</span></label>
-                        <select id="city" name="city" required class="form-control">
-                            <option value="">-- Select City --</option>
-                            <?php foreach ($cities as $slug => $city): ?>
-                                <option value="<?php echo $slug; ?>"><?php echo htmlspecialchars($city['name']); ?></option>
-                            <?php endforeach; ?>
-                        </select>
-                        <span class="error-msg" id="city-error"></span>
-                    </div>
+
+                <p class="estimate-field-group-label">SERVICE DETAILS</p>
+                <div class="estimate-form-row">
+                    <select id="service" name="service" required class="estimate-input">
+                        <option value="">Service Type</option>
+                        <?php foreach ($services as $slug => $svc): ?>
+                            <option value="<?php echo $slug; ?>"><?php echo htmlspecialchars($svc['name']); ?></option>
+                        <?php endforeach; ?>
+                    </select>
+                    <select id="city" name="city" required class="estimate-input">
+                        <option value="">Your City</option>
+                        <?php foreach ($cities as $slug => $city): ?>
+                            <option value="<?php echo $slug; ?>"><?php echo htmlspecialchars($city['name']); ?></option>
+                        <?php endforeach; ?>
+                    </select>
                 </div>
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="message">Message / Details</label>
-                        <textarea id="message" name="message" rows="4" class="form-control" placeholder="Please describe what you need cleaned (approx. square footage, siding type, etc.)"></textarea>
-                    </div>
-                </div>
-                <div class="form-submit">
-                    <button type="submit" class="btn btn-primary btn-block btn-large">Send Quote Request &rarr;</button>
-                </div>
+
+                <p class="estimate-field-group-label">NOTES</p>
+                <textarea id="message" name="message" rows="3" class="estimate-input estimate-textarea" placeholder="Optional – describe what needs cleaning"></textarea>
+
+                <p class="estimate-disclaimer">We confirm every request by phone or text. No hidden fees — ever.</p>
+
+                <button type="submit" class="estimate-submit-btn">
+                    Submit Estimate Request <span>&#10132;</span>
+                </button>
+
                 <div id="form-status" class="form-status-alert"></div>
             </form>
+
         </div>
     </div>
 </section>
 
 <!-- Service Areas Hub Grid -->
+
 <section class="areas-section section-padding">
     <div class="container">
         <div class="text-center section-header">
