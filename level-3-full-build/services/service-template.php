@@ -1,292 +1,352 @@
 <?php
 /**
  * Unified Service Template - Summit Exterior Cleaning LLC
- * Renders Service details OR Service-in-City local pages.
+ * Three-section premium layout: Hero → Process/Benefits → Results/FAQs
  */
 require_once dirname(__DIR__) . '/includes/config.php';
 $services = require dirname(__DIR__) . '/data/services.php';
-$cities = require dirname(__DIR__) . '/data/cities.php';
-$reviews = require dirname(__DIR__) . '/data/reviews.php';
+$cities   = require dirname(__DIR__) . '/data/cities.php';
+$reviews  = require dirname(__DIR__) . '/data/reviews.php';
 
 // Fetch query params
 $service_slug = $_GET['service'] ?? '';
-$city_slug = $_GET['city'] ?? null;
+$city_slug    = $_GET['city']    ?? null;
 
 // Validate service exists
 if (!isset($services[$service_slug])) {
-    // Graceful 404 fallback
     header("HTTP/1.1 404 Not Found");
     include dirname(__DIR__) . '/404.php';
     exit;
 }
 
-$service = $services[$service_slug];
-$city = null;
-$is_indexed = true;
+$service     = $services[$service_slug];
+$city        = null;
+$is_indexed  = true;
 
-// If city is requested, validate it exists
 if ($city_slug !== null) {
     if (!isset($cities[$city_slug])) {
         header("HTTP/1.1 404 Not Found");
         include dirname(__DIR__) . '/404.php';
         exit;
     }
-    $city = $cities[$city_slug];
-    
-    // Check if this service-in-city combo should be indexed
+    $city       = $cities[$city_slug];
     $is_indexed = in_array($city_slug, $service['indexed_cities']);
 }
 
 // -------------------------------------------------------------------
-// Prepare Metadata, Canonical, Breadcrumbs & Schemas
+// Metadata / Schema / FAQs
 // -------------------------------------------------------------------
-
 $meta = [];
-
 if ($city) {
-    // Service-in-City local page
-    $meta['title'] = $service['name'] . ' ' . $city['name'] . ' NC | Summit Exterior Clean';
-    $meta['description'] = 'Need ' . htmlspecialchars(strtolower($service['name'])) . ' in ' . htmlspecialchars($city['name']) . ', NC? Mike Reyes provides safe soft washing from ' . htmlspecialchars($service['pricing']) . '. Fully insured.';
-    $meta['canonical'] = '/services/' . $service_slug . '/' . $city_slug;
-    $meta['noindex'] = !$is_indexed; // If not in indexed list, set noindex
-    
+    $meta['title']       = $service['name'] . ' ' . $city['name'] . ' NC | Summit Exterior Cleaning';
+    $meta['description'] = 'Need ' . strtolower($service['name']) . ' in ' . $city['name'] . ', NC? Mike Reyes provides safe soft washing from ' . $service['pricing'] . '. Fully insured.';
+    $meta['canonical']   = '/services/' . $service_slug . '/' . $city_slug;
+    $meta['noindex']     = !$is_indexed;
     $meta['breadcrumbs'] = [
-        ['name' => 'Home', 'url' => '/'],
-        ['name' => 'Services', 'url' => '/services'],
+        ['name' => 'Home',             'url' => '/'],
+        ['name' => 'Services',         'url' => '/services'],
+        ['name' => $service['name'],   'url' => '/services/' . $service_slug],
+        ['name' => $city['name'],      'url' => '/services/' . $service_slug . '/' . $city_slug],
+    ];
+} else {
+    $meta['title']       = $service['name'] . ' Asheville NC | Summit Exterior Cleaning';
+    $meta['description'] = $service['name'] . ' from ' . $service['pricing'] . '. Summit Exterior Cleaning provides safe soft-wash cleaning across Buncombe & Henderson counties.';
+    $meta['canonical']   = '/services/' . $service_slug;
+    $meta['noindex']     = false;
+    $meta['breadcrumbs'] = [
+        ['name' => 'Home',           'url' => '/'],
+        ['name' => 'Services',       'url' => '/services'],
         ['name' => $service['name'], 'url' => '/services/' . $service_slug],
-        ['name' => $city['name'], 'url' => '/services/' . $service_slug . '/' . $city_slug]
-    ];
-} else {
-    // Service Hub page
-    $meta['title'] = $service['name'] . ' | Asheville NC | Summit Exterior Cleaning';
-    $meta['description'] = htmlspecialchars($service['name']) . ' from ' . htmlspecialchars($service['pricing']) . '. Summit Exterior Cleaning provides safe soft-wash cleaning in Buncombe & Henderson counties.';
-    $meta['canonical'] = '/services/' . $service_slug;
-    $meta['noindex'] = false;
-    
-    $meta['breadcrumbs'] = [
-        ['name' => 'Home', 'url' => '/'],
-        ['name' => 'Services', 'url' => '/services'],
-        ['name' => $service['name'], 'url' => '/services/' . $service_slug]
     ];
 }
 
-// Service Schema Injection
-$meta['service_schema'] = [
-    'service' => $service,
-    'city' => $city ? $city['name'] : null
-];
+$meta['service_schema'] = ['service' => $service, 'city' => $city ? $city['name'] : null];
 
-// FAQs Injection
-$page_faqs = [];
-if ($service_slug === 'roof-soft-washing') {
-    $page_faqs = [
-        ['q' => 'Is soft washing safe for my shingles?', 'a' => 'Yes, low-pressure chemical treatment is the exact method asphalt shingle manufacturers actually recommend. We never use pressure washers on roofs.'],
-        ['q' => 'Will soft washing remove all black streaks?', 'a' => 'Yes, the algaecide sanitizes the shingles and kills the dark Gloeocapsa Magma algae instantly, returning your roof to its original look.'],
-        ['q' => 'How long does a roof cleaning last?', 'a' => 'Our roof treatments typically keep shingles clean and free of streaks for 3 to 5 years.']
-    ];
-} else if ($service_slug === 'house-soft-washing') {
-    $page_faqs = [
-        ['q' => 'Will soft washing damage my siding?', 'a' => 'No. Because we wash at low pressure (under 500 PSI), there is no risk of cracking vinyl, gouging wood, or forcing water behind panels.'],
-        ['q' => 'Will soft washing damage my plants or lawn?', 'a' => 'No. We pre-wet all grass, shrubs, and flowers with clean water, use plant-safe dilutions, and thoroughly rinse the landscaping afterward.'],
-        ['q' => 'Do you need to be home for the wash?', 'a' => 'No, as long as we have access to a working outdoor water spigot and any locked gates are opened.']
-    ];
-} else if ($service_slug === 'concrete-cleaning') {
-    $page_faqs = [
-        ['q' => 'Will concrete cleaning leave zebra stripes?', 'a' => 'No. We use professional flat-surface cleaners that maintain an even nozzle distance, ensuring a uniform, stripe-free finish.'],
-        ['q' => 'Can you remove oil and rust stains?', 'a' => 'We pre-treat oil and rust with specialty commercial surfactants. While extremely old, deep stains may not release 100%, we significantly lighten and improve them.']
-    ];
-} else {
-    $page_faqs = [
-        ['q' => 'Do you provide free estimates?', 'a' => 'Yes, owner Mike Reyes provides fast, free estimate quotes for all services in Buncombe and Henderson counties.'],
-        ['q' => 'Are you insured?', 'a' => 'Yes, Summit Exterior Cleaning is fully insured with a $2,000,000 general liability policy for your peace of mind.']
-    ];
-}
+// Common FAQs (feeding the FAQPage JSON-LD and page accordion)
+$page_faqs = require dirname(__DIR__) . '/data/faqs.php';
 $meta['faqs'] = $page_faqs;
+
+// Contextual review lookup
+$featured_review = null;
+if ($city) {
+    foreach ($reviews as $rev) {
+        if ($rev['service'] === $service_slug && $rev['location'] === $city_slug) {
+            $featured_review = $rev; break;
+        }
+    }
+}
+if (!$featured_review) {
+    foreach ($reviews as $rev) {
+        if ($rev['service'] === $service_slug) { $featured_review = $rev; break; }
+    }
+}
+if (!$featured_review && !empty($reviews)) { $featured_review = $reviews[0]; }
+
+// Hero image
+$hero_img = ($city && isset($city['photos'][0])) ? $city['photos'][0] : $service['photos'][0];
+
+// Process steps (service-specific, 3-step checklist loaded dynamically from data/services.php)
+$process_steps = $service['process'] ?? [];
+
+// Trust signals (shown in the benefits panel)
+$trust_items = [
+    ['icon' => 'M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z', 'title' => 'Fully Insured', 'desc' => '$2M general liability policy on every job.'],
+    ['icon' => 'M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z', 'title' => '9+ Years Local', 'desc' => 'Owner-operated since 2017 across Buncombe & Henderson counties.'],
+    ['icon' => 'M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6', 'title' => 'Plant-Safe Methods', 'desc' => 'Eco-friendly soaps that are safe for lawns, gardens, and pets.'],
+    ['icon' => 'M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z', 'title' => '4.9 ★ Rating', 'desc' => '87+ verified Google reviews from Asheville-area homeowners.'],
+];
 
 include dirname(__DIR__) . '/includes/head.php';
 include dirname(__DIR__) . '/includes/header.php';
-
-// Filter contextual reviews for this service (and location if set)
-$featured_review = null;
-if ($city) {
-    // Try to find review matching service AND city
-    foreach ($reviews as $rev) {
-        if ($rev['service'] === $service_slug && $rev['location'] === $city_slug) {
-            $featured_review = $rev;
-            break;
-        }
-    }
-}
-// Fallback: match service only
-if (!$featured_review) {
-    foreach ($reviews as $rev) {
-        if ($rev['service'] === $service_slug) {
-            $featured_review = $rev;
-            break;
-        }
-    }
-}
-// Second fallback: any review
-if (!$featured_review && !empty($reviews)) {
-    $featured_review = $reviews[0];
-}
-
-// Select display image
-$display_img = $service['photos'][0];
-if ($city && isset($city['photos'][0])) {
-    // Blend image references: use a location shot for local page hero if available, else service shot
-    $hero_img = $city['photos'][0];
-} else {
-    $hero_img = $display_img;
-}
 ?>
 
-<!-- Internal Hero Banner -->
-<section class="internal-hero-section" style="background-image: linear-gradient(rgba(12, 31, 45, 0.85), rgba(12, 31, 45, 0.9)), url('<?php echo SITE_URL; ?>/<?php echo $hero_img; ?>');">
-    <div class="container text-center">
-        <span class="internal-hero-subtitle">
-            <?php echo $city ? htmlspecialchars($city['name']) . ', NC' : 'Professional Service'; ?>
-        </span>
-        <h1 class="internal-hero-title">
-            <?php echo htmlspecialchars($service['name']) . ($city ? ' in ' . htmlspecialchars($city['name']) : ''); ?>
-        </h1>
-        <p class="internal-hero-price">Rates: <?php echo htmlspecialchars($service['pricing']); ?></p>
+<!-- ================================================================
+     SECTION 1 — HERO: Badge · Title · CTAs · Full-bleed Image
+     ================================================================ -->
+<section class="sdt-hero">
+    <div class="container sdt-hero-content">
+
+        <!-- Breadcrumb pill -->
+        <div class="sdt-breadcrumb">
+            <a href="<?php echo SITE_URL; ?>/services" class="sdt-breadcrumb-link">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                Services
+            </a>
+            <span class="sdt-breadcrumb-sep">/</span>
+            <span class="sdt-breadcrumb-current"><?php echo htmlspecialchars($service['name']); ?></span>
+            <?php if ($city): ?>
+                <span class="sdt-breadcrumb-sep">/</span>
+                <span class="sdt-breadcrumb-current"><?php echo htmlspecialchars($city['name']); ?></span>
+            <?php endif; ?>
+        </div>
+
+        <!-- Hero Text -->
+        <div class="sdt-hero-text">
+            <h1 class="sdt-hero-title">
+                <?php echo htmlspecialchars($service['name']); ?>
+                <?php if ($city): ?>
+                    <span class="sdt-hero-city"> in <?php echo htmlspecialchars($city['name']); ?></span>
+                <?php endif; ?>
+            </h1>
+
+            <!-- CTA Buttons -->
+            <div class="sdt-hero-actions">
+                <a href="tel:<?php echo PHONE_TEL; ?>" class="sdt-cta-primary">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"></path></svg>
+                    Book a Free Estimate
+                </a>
+                <a href="#sdt-process" class="sdt-cta-secondary">
+                    Explore Pricing
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="sdt-btn-arrow"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Full-bleed hero image -->
+    <div class="sdt-hero-image-wrap">
+        <img
+            src="<?php echo SITE_URL; ?>/<?php echo htmlspecialchars($hero_img); ?>"
+            alt="<?php echo htmlspecialchars($service['name']); ?> in <?php echo $city ? htmlspecialchars($city['name']) : 'Asheville, NC'; ?>"
+            class="sdt-hero-img"
+        >
+        <!-- Pricing tag overlay -->
+        <div class="sdt-price-badge">
+            <span class="sdt-price-label">Starting from</span>
+            <span class="sdt-price-value"><?php echo htmlspecialchars($service['pricing']); ?></span>
+        </div>
     </div>
 </section>
 
-<!-- Main Page Layout Grid -->
-<section class="service-page-content section-padding">
-    <div class="container page-grid-2col">
-        
-        <!-- Left Side: Main Copy content -->
-        <main class="main-content-text">
-            <h2><?php echo htmlspecialchars($service['headline']); ?></h2>
-            
-            <p><?php echo $service['description']; ?></p>
-            
-            <?php if ($city): ?>
-                <!-- Local SEO Genuinely Local Copy Integration -->
-                <div class="local-seo-content rounded-lg border bg-light p-4 my-4">
-                    <h3>Siding & Exterior Cleaning in <?php echo htmlspecialchars($city['name']); ?></h3>
-                    <p><?php echo htmlspecialchars($city['local_note']); ?></p>
-                    <p>Whether you reside in one of <?php echo htmlspecialchars($city['name']); ?>'s historic districts like <strong><?php echo htmlspecialchars($city['neighborhoods'][0] ?? 'Downtown'); ?></strong> or a newer subdivision in <strong><?php echo htmlspecialchars($city['neighborhoods'][1] ?? $city['name']); ?></strong>, Mike Reyes and the team at Summit Exterior Cleaning have the exact detergent blends and soft wash equipment required to safely wash away organic stains and protect your curb appeal.</p>
-                </div>
-            <?php endif; ?>
 
-            <div class="service-features-grid mt-4">
-                <div class="feat-box">
-                    <h3>Common Symptoms We Clean:</h3>
-                    <ul class="bullet-list-symptoms">
-                        <?php foreach ($service['symptoms'] as $symptom): ?>
-                            <li><span class="cross-icon">&times;</span> <?php echo htmlspecialchars($symptom); ?></li>
-                        <?php endforeach; ?>
-                    </ul>
+<!-- ================================================================
+     SECTION 2 — PROCESS & BENEFITS (Dark)
+     ================================================================ -->
+<section class="sdt-process-section" id="sdt-process">
+    <div class="container">
+
+        <div class="sdt-process-header">
+            <div class="sdt-section-label">
+                <span class="sdt-label-dot"></span> Our Process
+            </div>
+            <h2 class="sdt-process-title"><?php echo htmlspecialchars($service['headline']); ?></h2>
+        </div>
+
+        <div class="sdt-process-body">
+
+            <!-- Left: What's Included (benefits) -->
+            <div class="sdt-included-panel">
+                <h3 class="sdt-panel-title">What's Included</h3>
+                <ul class="sdt-check-list">
+                    <?php foreach ($service['benefits'] as $benefit): ?>
+                    <li class="sdt-check-item">
+                        <span class="sdt-check-icon">
+                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                        </span>
+                        <?php echo htmlspecialchars($benefit); ?>
+                    </li>
+                    <?php endforeach; ?>
+                </ul>
+            </div>
+
+            <!-- Right: Process Steps -->
+            <div class="sdt-steps-panel">
+                <h3 class="sdt-panel-title">Working Process</h3>
+                <div class="sdt-steps-list">
+                    <?php foreach ($process_steps as $step): ?>
+                    <div class="sdt-step-item">
+                        <div class="sdt-step-meta">
+                            <span class="sdt-step-num"><?php echo $step['step']; ?></span>
+                        </div>
+                        <div class="sdt-step-text">
+                            <h4 class="sdt-step-title"><?php echo htmlspecialchars($step['title']); ?></h4>
+                            <p class="sdt-step-desc"><?php echo htmlspecialchars($step['desc']); ?></p>
+                        </div>
+                    </div>
+                    <?php endforeach; ?>
                 </div>
-                
-                <div class="feat-box">
-                    <h3>Why Choose Summit for This Service:</h3>
-                    <ul class="bullet-list-benefits">
-                        <?php foreach ($service['benefits'] as $benefit): ?>
-                            <li><span class="check-icon">&check;</span> <?php echo htmlspecialchars($benefit); ?></li>
-                        <?php endforeach; ?>
-                    </ul>
+
+                <!-- CTA inside dark section -->
+                <a href="tel:<?php echo PHONE_TEL; ?>" class="sdt-cta-primary sdt-section-cta">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"></path></svg>
+                    Submit Booking Request
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- ================================================================
+     SECTION 3 — RESULTS, WHY US & FAQs (Light)
+     ================================================================ -->
+<section class="sdt-results-section">
+    <div class="container">
+
+        <!-- Why Choose Summit -->
+        <div class="sdt-why-panel">
+            <div class="sdt-why-header">
+                <div class="sdt-section-label sdt-label-light">
+                    <span class="sdt-label-dot"></span> Why Choose Us
+                </div>
+                <div class="sdt-why-header-right">
+                    <h2 class="sdt-why-title">From homes to businesses, we offer comprehensive solutions.</h2>
+                    <a href="<?php echo SITE_URL; ?>/services" class="sdt-cta-secondary">
+                        Explore Services
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="sdt-btn-arrow"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                    </a>
                 </div>
             </div>
 
-            <!-- Contextual Featured Review -->
-            <?php if ($featured_review): ?>
-                <div class="contextual-review-box rounded-lg mt-5 shadow-sm border p-4 bg-white">
-                    <span class="review-stars">★★★★★</span>
-                    <blockquote class="context-quote">
-                        "<?php echo htmlspecialchars($featured_review['text']); ?>"
-                    </blockquote>
-                    <div class="review-details-author">
-                        <strong><?php echo htmlspecialchars($featured_review['author']); ?></strong> 
-                        <span> &bull; <?php echo htmlspecialchars($featured_review['location_name']); ?>, NC</span>
+            <!-- Trust grid -->
+            <div class="sdt-trust-grid">
+                <?php foreach ($trust_items as $trust): ?>
+                <div class="sdt-trust-card">
+                    <div class="sdt-trust-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="<?php echo $trust['icon']; ?>"></path>
+                        </svg>
+                    </div>
+                    <h4 class="sdt-trust-title"><?php echo $trust['title']; ?></h4>
+                    <p class="sdt-trust-desc"><?php echo $trust['desc']; ?></p>
+                </div>
+                <?php endforeach; ?>
+            </div>
+
+            <!-- Photo gallery strip (3 images) -->
+            <div class="sdt-gallery-strip">
+                <?php foreach (array_slice($service['photos'], 0, 3) as $photo): ?>
+                <div class="sdt-gallery-item">
+                    <img src="<?php echo SITE_URL; ?>/<?php echo htmlspecialchars($photo); ?>"
+                         alt="<?php echo htmlspecialchars($service['name']); ?> project photo"
+                         class="sdt-gallery-img">
+                </div>
+                <?php endforeach; ?>
+            </div>
+        </div>
+
+        <!-- Results / Description copy -->
+        <div class="sdt-results-copy-panel">
+            <div class="sdt-section-label sdt-label-light">
+                <span class="sdt-label-dot"></span> Results
+            </div>
+            <div class="sdt-results-body">
+                <p class="sdt-results-desc"><?php echo nl2br(htmlspecialchars($service['description'])); ?></p>
+
+                <?php if ($city): ?>
+                <div class="sdt-local-note">
+                    <h3>Serving <?php echo htmlspecialchars($city['name']); ?>, NC</h3>
+                    <p><?php echo htmlspecialchars($city['local_note']); ?></p>
+                </div>
+                <?php endif; ?>
+
+                <?php if ($featured_review): ?>
+                <div class="sdt-review-block">
+                    <div class="sdt-review-stars">★★★★★</div>
+                    <blockquote class="sdt-review-quote">"<?php echo htmlspecialchars($featured_review['text']); ?>"</blockquote>
+                    <cite class="sdt-review-author">
+                        — <strong><?php echo htmlspecialchars($featured_review['author']); ?></strong>,
+                        <?php echo htmlspecialchars($featured_review['location_name']); ?>, NC
+                    </cite>
+                </div>
+                <?php endif; ?>
+            </div>
+        </div>
+
+        <!-- FAQ Section -->
+        <div class="sdt-faq-section">
+            <div class="sdt-faq-header">
+                <div class="sdt-section-label sdt-label-light">
+                    <span class="sdt-label-dot"></span> Frequently Asked Questions
+                </div>
+                <a href="tel:<?php echo PHONE_TEL; ?>" class="sdt-faq-help-link">
+                    Need Help? Call Mike
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-left:4px; vertical-align: middle;"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                </a>
+            </div>
+
+            <!-- Two-column FAQ grid -->
+            <div class="sdt-faq-grid">
+                <?php foreach ($page_faqs as $i => $faq): ?>
+                <div class="sdt-faq-item accordion-item" id="sdt-faq-<?php echo $i; ?>">
+                    <button class="sdt-faq-q accordion-header">
+                        <span class="sdt-faq-icon">+</span>
+                        <span><?php echo htmlspecialchars($faq['q']); ?></span>
+                    </button>
+                    <div class="sdt-faq-a accordion-body">
+                        <p><?php echo htmlspecialchars($faq['a']); ?></p>
                     </div>
                 </div>
-            <?php endif; ?>
-
-            <!-- Contextual localized FAQs -->
-            <div class="faq-list-section mt-5">
-                <h2>Frequently Asked Questions</h2>
-                <div class="accordion-list">
-                    <?php foreach ($page_faqs as $i => $faq): ?>
-                        <div class="accordion-item rounded-lg border mb-3">
-                            <button class="accordion-header" id="faq-heading-<?php echo $i; ?>">
-                                <span><?php echo htmlspecialchars($faq['q']); ?></span>
-                                <span class="accordion-icon">+</span>
-                            </button>
-                            <div class="accordion-body" id="faq-body-<?php echo $i; ?>">
-                                <p><?php echo htmlspecialchars($faq['a']); ?></p>
-                            </div>
-                        </div>
-                    <?php endforeach; ?>
-                </div>
+                <?php endforeach; ?>
             </div>
+        </div>
 
-            <!-- Area list for Service Hub (to meet: lists areas service covers) -->
-            <?php if (!$city): ?>
-                <div class="service-hub-cities rounded-lg border bg-light p-4 mt-5">
-                    <h3>Areas Serviced for <?php echo htmlspecialchars($service['name']); ?></h3>
-                    <p>Summit Exterior Cleaning provides professional <?php echo htmlspecialchars(strtolower($service['name'])); ?> in Buncombe & Henderson counties, including:</p>
-                    <ul class="service-cities-links-grid mt-3">
-                        <?php foreach ($cities as $c_slug => $c_data): ?>
-                            <li>
-                                <a href="<?php echo SITE_URL; ?>/services/<?php echo $service_slug; ?>/<?php echo $c_slug; ?>" class="city-pill">
-                                    <?php echo htmlspecialchars($c_data['name']); ?> &rarr;
-                                </a>
-                            </li>
-                        <?php endforeach; ?>
-                    </ul>
-                </div>
-            <?php endif; ?>
-
-        </main>
-        
-        <!-- Right Side: Sidebar Navigation/CTA & Cross-linking -->
-        <aside class="sidebar-content">
-            <!-- Call CTA Sidebar Widget -->
-            <div class="sidebar-card rounded-lg bg-primary text-white shadow-sm p-4 text-center">
-                <h3>Need an Estimate?</h3>
-                <p class="mb-3">Speak directly with owner Mike Reyes for a free, fair quote on your <?php echo htmlspecialchars(strtolower($service['name'])); ?>.</p>
-                <a href="tel:<?php echo PHONE_TEL; ?>" class="btn btn-accent btn-block btn-large">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="margin-right:6px; vertical-align:middle;"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
-                    Call Mike: (828) 555-0142
+        <!-- Areas Served Strip -->
+        <?php if (!$city): ?>
+        <div class="sdt-areas-panel">
+            <div class="sdt-section-label sdt-label-light">
+                <span class="sdt-label-dot"></span> Areas Covered
+            </div>
+            <h3 class="sdt-areas-title"><?php echo htmlspecialchars($service['name']); ?> across Western NC</h3>
+            <div class="sdt-areas-pills">
+                <?php foreach ($cities as $c_slug => $c_data): ?>
+                <a href="<?php echo SITE_URL; ?>/services/<?php echo $service_slug; ?>/<?php echo $c_slug; ?>" class="sdt-area-pill">
+                    <?php echo htmlspecialchars($c_data['name']); ?>
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
                 </a>
-                <a href="<?php echo SITE_URL; ?>/contact?service=<?php echo $service_slug; ?>" class="btn btn-outline-white btn-block mt-2">Request Quote Online</a>
+                <?php endforeach; ?>
             </div>
+        </div>
+        <?php endif; ?>
 
-            <!-- Photo Gallery Widget -->
-            <div class="sidebar-card rounded-lg bg-white border shadow-sm p-4 mt-4">
-                <h3>Project Gallery</h3>
-                <div class="sidebar-gallery-grid">
-                    <?php 
-                    // Show some photos from this service
-                    foreach (array_slice($service['photos'], 0, 4) as $photo):
-                    ?>
-                        <img src="<?php echo SITE_URL; ?>/<?php echo $photo; ?>" alt="<?php echo htmlspecialchars($service['name']); ?> project photo" class="rounded shadow-sm">
-                    <?php endforeach; ?>
-                </div>
-            </div>
-
-            <!-- Dynamic Near-by Areas linking widget -->
-            <div class="mt-4">
-                <?php 
-                $current_service_slug = $service_slug;
-                $current_city_slug = $city_slug;
-                include dirname(__DIR__) . '/includes/nearby-areas.php'; 
-                ?>
-            </div>
-        </aside>
-        
     </div>
 </section>
 
-<!-- CTA Strip banner -->
+
+<!-- CTA Strip -->
 <?php include dirname(__DIR__) . '/includes/contact-strip.php'; ?>
 
-<?php 
+<?php
 include dirname(__DIR__) . '/includes/mobile-sticky-cta.php';
-include dirname(__DIR__) . '/includes/footer.php'; 
+include dirname(__DIR__) . '/includes/footer.php';
 ?>

@@ -20,11 +20,63 @@ include __DIR__ . '/includes/head.php';
 include __DIR__ . '/includes/header.php';
 ?>
 
-<!-- Internal Hero -->
-<section class="internal-hero-section" style="background-image: linear-gradient(rgba(12, 31, 45, 0.85), rgba(12, 31, 45, 0.9)), url('<?php echo SITE_URL; ?>/assets/images/general/general_2.webp');">
-    <div class="container text-center">
-        <span class="internal-hero-subtitle">Our Story & Methodology</span>
-        <h1 class="internal-hero-title">About Summit Exterior Cleaning</h1>
+<!-- Preloader Container -->
+<div id="preloader" class="preloader-container">
+  <!-- Sequential sliding columns background -->
+  <div class="preloader-bg">
+    <div class="preloader-col"></div>
+    <div class="preloader-col"></div>
+    <div class="preloader-col"></div>
+    <div class="preloader-col"></div>
+    <div class="preloader-col"></div>
+    <div class="preloader-col"></div>
+  </div>
+  
+  <!-- Centered Logo Text -->
+  <div id="preloader-text-wrap" class="preloader-text-wrapper">
+    <div class="preloader-text">SUMMIT</div>
+  </div>
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const preloader = document.getElementById("preloader");
+  const preloaderText = document.getElementById("preloader-text-wrap");
+  if (!preloader || !preloaderText) return;
+
+  // 1. Start the sweep exit animation after text fills (1.75s)
+  setTimeout(() => {
+    preloader.classList.add("exit");
+    preloaderText.classList.add("exit");
+  }, 1750);
+
+  // 2. Remove the preloader from DOM after transition completes (3.35s)
+  setTimeout(() => {
+    preloader.remove();
+  }, 3350);
+});
+</script>
+
+<!-- Premium About Hero Section -->
+<section class="about-hero">
+    <div class="container about-hero-grid">
+        <div class="about-hero-left">
+            <div class="about-badge">
+                <span class="badge-dot"></span> About Us
+            </div>
+        </div>
+        <div class="about-hero-right">
+            <div class="about-hero-meta-row">
+                <div class="about-hero-tagline">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0; margin-top: 2px;">
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                    <span class="about-hero-tagline-text">An Independent Reliable, Affordable, and Eco-friendly Cleaning Solutions.</span>
+                </div>
+                <div class="about-hero-year">Est. 2017</div>
+            </div>
+            <h1 class="about-hero-title">Asheville's local exterior cleaning specialist</h1>
+        </div>
     </div>
 </section>
 

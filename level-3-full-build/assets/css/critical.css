@@ -98,7 +98,6 @@ a { color: var(--color-accent); text-decoration: none; }
     text-transform: none;
     letter-spacing: normal;
     margin-bottom: 24px;
-    animation: slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
 .hero-tagline-sub {
@@ -106,15 +105,12 @@ a { color: var(--color-accent); text-decoration: none; }
 }
 
 .hero-title {
-    animation: slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.15s both;
 }
 
 .hero-desc {
-    animation: slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.3s both;
 }
 
 .hero-actions {
-    animation: slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.45s both;
 }
 .hero-actions .btn {
     border-radius: 9999px;

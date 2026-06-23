@@ -2,6 +2,26 @@
 /**
  * Services Hub - Summit Exterior Cleaning LLC
  */
+
+// Local PHP web server routing fallback for clean URLs
+$script_name = $_SERVER['SCRIPT_NAME'];
+$base_dir = dirname($script_name);
+$request_path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+
+if (str_starts_with($request_path, $base_dir)) {
+    $sub_path = substr($request_path, strlen($base_dir));
+    $sub_path = trim($sub_path, '/');
+    if ($sub_path !== '') {
+        $parts = explode('/', $sub_path);
+        $_GET['service'] = $parts[0];
+        if (isset($parts[1])) {
+            $_GET['city'] = $parts[1];
+        }
+        include __DIR__ . '/service-template.php';
+        exit;
+    }
+}
+
 require_once dirname(__DIR__) . '/includes/config.php';
 $services = require dirname(__DIR__) . '/data/services.php';
 
@@ -20,55 +40,36 @@ include dirname(__DIR__) . '/includes/head.php';
 include dirname(__DIR__) . '/includes/header.php';
 ?>
 
-<!-- Internal Hero -->
-<section class="internal-hero-section" style="background-image: linear-gradient(rgba(12, 31, 45, 0.85), rgba(12, 31, 45, 0.9)), url('<?php echo SITE_URL; ?>/assets/images/general/general_1.webp');">
-    <div class="container text-center">
-        <span class="internal-hero-subtitle">Our Professional Solutions</span>
-        <h1 class="internal-hero-title">Exterior Cleaning Services</h1>
-    </div>
-</section>
-
-<!-- Services Grid Section -->
-<section class="services-hub-content section-padding">
-    <div class="container">
-        <div class="intro-block text-center max-w-3xl mx-auto mb-5">
-            <h2>Careful, Professional Washing for Every Surface</h2>
-            <p class="lead-text">What sets Summit Exterior Cleaning apart is our surface-specific approach. We adjust our detergents and water pressure to perfectly suit vinyl, brick, shingles, or concrete—ensuring spotless results without the risk of damage.</p>
+<!-- Custom Services Hero Section -->
+<section class="services-hero">
+    <div class="container services-hero-grid">
+        <div class="services-hero-left">
+            <div class="services-badge" style="margin-bottom: 0;">
+                <span class="badge-dot"></span> Services
+            </div>
         </div>
-
-        <div class="services-list mt-5">
-            <?php 
-            $count = 0;
-            foreach ($services as $slug => $svc): 
-                $count++;
-                $is_even = ($count % 2 === 0);
-            ?>
-                <div class="service-row-card rounded-lg bg-white shadow-sm border p-4 mb-5 <?php echo $is_even ? 'row-reverse' : ''; ?>">
-                    <div class="service-row-img-wrapper">
-                        <img src="<?php echo SITE_URL; ?>/<?php echo $svc['photos'][0]; ?>" alt="<?php echo htmlspecialchars($svc['name']); ?>" class="service-row-img rounded-lg shadow-sm">
-                    </div>
-                    <div class="service-row-text">
-                        <span class="service-row-price">Rate: <?php echo htmlspecialchars($svc['pricing']); ?></span>
-                        <h2><?php echo htmlspecialchars($svc['name']); ?></h2>
-                        <p class="service-row-desc"><?php echo htmlspecialchars($svc['description']); ?></p>
-                        
-                        <h4 class="mt-3">Benefits of our method:</h4>
-                        <ul class="check-list-2col">
-                            <?php foreach ($svc['benefits'] as $benefit): ?>
-                                <li>&check; <?php echo htmlspecialchars($benefit); ?></li>
-                            <?php endforeach; ?>
-                        </ul>
-                        
-                        <div class="service-row-actions mt-4">
-                            <a href="<?php echo SITE_URL; ?>/services/<?php echo $slug; ?>" class="btn btn-primary">Detailed Service Info</a>
-                            <a href="<?php echo SITE_URL; ?>/contact?service=<?php echo $slug; ?>" class="btn btn-outline">Request Quote &rarr;</a>
-                        </div>
-                    </div>
+        <div class="services-hero-right">
+            <div class="services-hero-tagline">
+                <!-- Cleaning Checkmark SVG Icon -->
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="align-self: flex-start; margin-top: 2px;">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+                <div class="services-hero-tagline-text">
+                    <span class="tagline-line-1">Professional low-pressure soft washing</span>
+                    <span class="tagline-line-2">& pressure washing across Asheville</span>
                 </div>
-            <?php endforeach; ?>
+            </div>
+            <h1 class="services-hero-title">Soft washing that lasts. Spotless results without siding damage.</h1>
+            <a href="#services-section" class="services-hero-btn">
+                Explore Services
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="btn-arrow" style="margin-left: 8px; vertical-align: middle; display: inline-block;"><polyline points="9 18 15 12 9 6"></polyline></svg>
+            </a>
         </div>
     </div>
 </section>
+
+<!-- Services Shared Section Include -->
+<?php include dirname(__DIR__) . '/includes/services-section.php'; ?>
 
 <!-- CTA Strip -->
 <?php include dirname(__DIR__) . '/includes/contact-strip.php'; ?>

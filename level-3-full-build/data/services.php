@@ -33,7 +33,12 @@ return [
             'assets/images/services/House_Soft_Washing/House_Soft_Washing_4.webp',
             'assets/images/services/House_Soft_Washing/House_Soft_Washing_5.webp'
         ],
-        'indexed_cities' => ['asheville', 'hendersonville', 'black-mountain', 'weaverville', 'fletcher']
+        'indexed_cities' => ['asheville', 'hendersonville', 'black-mountain', 'weaverville', 'fletcher'],
+        'process' => [
+            ['step' => '01', 'title' => 'Pre-wet landscaping', 'desc' => 'We saturate all plants, grass, and flower beds around the home before applying any chemicals, keeping your landscaping safe throughout the wash.'],
+            ['step' => '02', 'title' => 'Apply soft-wash mix', 'desc' => 'A biodegradable detergent blend is applied at low pressure — dissolving algae, mold, and mildew at the root rather than just blasting the surface.'],
+            ['step' => '03', 'title' => 'Rinse & post-treat', 'desc' => 'We flush the siding and landscaping with clean water, then apply an algaecide rinse-aid that keeps your siding looking cleaner for 2–3× longer.']
+        ]
     ],
     'roof-soft-washing' => [
         'slug' => 'roof-soft-washing',
@@ -63,7 +68,12 @@ return [
             'assets/images/services/Roof_Soft_Washing/Roof_Soft_Washing_4.webp',
             'assets/images/services/Roof_Soft_Washing/Roof_Soft_Washing_5.webp'
         ],
-        'indexed_cities' => ['asheville', 'hendersonville', 'black-mountain', 'weaverville']
+        'indexed_cities' => ['asheville', 'hendersonville', 'black-mountain', 'weaverville'],
+        'process' => [
+            ['step' => '01', 'title' => 'Ladder-access only', 'desc' => 'Our crew never walks on pitched roof surfaces. We work entirely from ladders, protecting granule integrity and your shingle warranty.'],
+            ['step' => '02', 'title' => 'Low-pressure treatment', 'desc' => 'The ARMA-approved algaecide mix is applied at under 100 PSI — killing Gloeocapsa Magma, moss, and lichen down to the root structure.'],
+            ['step' => '03', 'title' => 'Post-rinse & clear', 'desc' => 'A light rinse flushes dead organic material off the roof and into the gutters, which we clear if needed, leaving a clean and protected surface.']
+        ]
     ],
     'concrete-cleaning' => [
         'slug' => 'concrete-cleaning',
@@ -93,7 +103,12 @@ return [
             'assets/images/services/Driveway___Concrete_Cleaning/Driveway___Concrete_Cleaning_4.webp',
             'assets/images/services/Driveway___Concrete_Cleaning/Driveway___Concrete_Cleaning_5.webp'
         ],
-        'indexed_cities' => ['asheville', 'hendersonville', 'black-mountain', 'weaverville', 'fletcher']
+        'indexed_cities' => ['asheville', 'hendersonville', 'black-mountain', 'weaverville', 'fletcher'],
+        'process' => [
+            ['step' => '01', 'title' => 'Pre-treat stains', 'desc' => 'Oil spots and rust marks are pre-treated with specialty surfactants to break the chemical bond before the flat-surface cleaner makes its pass.'],
+            ['step' => '02', 'title' => 'Flat-surface deep clean', 'desc' => 'A professional rotary flat-surface cleaner maintains a uniform nozzle distance — delivering a streak-free, even clean without amateur zebra marks.'],
+            ['step' => '03', 'title' => 'Algaecide post-treatment', 'desc' => 'A finishing algaecide application penetrates the pores to slow organic regrowth, keeping the surface brighter for months after the wash.']
+        ]
     ],
     'gutter-brightening' => [
         'slug' => 'gutter-brightening',
@@ -121,7 +136,12 @@ return [
             'assets/images/services/Gutter_Brightening/Gutter_Brightening_3.webp',
             'assets/images/services/Gutter_Brightening/Gutter_Brightening_4.webp'
         ],
-        'indexed_cities' => ['asheville', 'hendersonville']
+        'indexed_cities' => ['asheville', 'hendersonville'],
+        'process' => [
+            ['step' => '01', 'title' => 'Clear trough debris', 'desc' => 'We start by clearing leaves, shingle grit, and debris from inside the gutter troughs to ensure proper water flow after the brightening service.'],
+            ['step' => '02', 'title' => 'Detergent bond-breaking', 'desc' => 'A non-abrasive specialty cleaner is applied to the exterior gutter faces, chemically dissolving the oxidation bonds behind the tiger-stripe marks.'],
+            ['step' => '03', 'title' => 'Hand-detail & rinse', 'desc' => 'Each gutter face is hand-wiped to reveal the bright original finish beneath — no pressure wand streaking, just crisp, white border lines.']
+        ]
     ]
 ];
 ?>
